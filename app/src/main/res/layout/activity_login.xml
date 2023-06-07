@@ -38,7 +38,7 @@
         android:inputType="text"
         android:paddingLeft="14dp"
         android:textColorHint="#B3B3B3"
-        app:layout_constraintBottom_toTopOf="@+id/btn_register"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent" />
@@ -101,13 +101,13 @@
 
 
     <Button
-        android:id="@+id/btn_register"
+        android:id="@+id/btn_login"
         android:layout_width="294dp"
         android:layout_height="66dp"
         android:layout_marginBottom="56dp"
         android:backgroundTint="#FC9090"
         android:fontFamily="sans-serif"
-        android:text="Register"
+        android:text="GO!"
         android:textColor="#000000"
         android:textSize="40sp"
         android:textStyle="bold"
