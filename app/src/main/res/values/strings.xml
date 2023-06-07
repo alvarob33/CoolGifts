@@ -2,4 +2,7 @@
     <string name="app_name">Cool Gifts</string>
     <string name="login">LOGIN</string>
     <string name="register">REGISTER</string>
+
+    <string name="password_error">Password needs at least 8 characters, 1 uppercase and 1 number.</string>
+
 </resources>
