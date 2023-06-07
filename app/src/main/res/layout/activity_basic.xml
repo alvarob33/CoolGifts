@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FBD7D7"
     tools:context=".BasicActivity">
 
     <ImageView
@@ -16,11 +17,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/circle" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="615dp"
-        android:layout_height="660dp"
-        app:srcCompat="@drawable/home_btn"
-        tools:layout_editor_absoluteX="-66dp"
-        tools:layout_editor_absoluteY="35dp" />
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/home_btn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
