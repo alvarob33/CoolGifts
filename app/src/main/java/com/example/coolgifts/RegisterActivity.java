@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.coolgifts.api.CreateUserTask;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -93,13 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         .post(body)
                                         .build();
 
-                                try {
-                                    Response response = client.newCall(request).execute();
-                                    // Aquí puedes manejar la respuesta de la API según tus necesidades
-                                    // Por ejemplo, verificar el código de respuesta, mostrar mensajes de éxito o error, etc.
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
+                                new CreateUserTask(requestBody).execute();
                             }
                         }
                     }
@@ -118,7 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
-            if ( isValidPassword(passwordEditText.getText().toString()) ) {
+            if ( !isValidPassword(passwordEditText.getText().toString()) ) {
                 passwordErrorTextView.setText("Password needs at least 8 characters, 1 uppercase and 1 number.");
                 passwordErrorTextView.setTextColor(Color.RED);
                 passwordErrorTextView.setVisibility(View.VISIBLE);
