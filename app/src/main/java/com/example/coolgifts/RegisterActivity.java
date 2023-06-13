@@ -12,18 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.coolgifts.api.CreateUserTask;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-
+import com.example.coolgifts.api.APIUser;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
@@ -48,11 +37,8 @@ public class RegisterActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.et_password);
         repeatPasswordEditText = findViewById(R.id.et_repeatPassword);
         registerBtn = findViewById(R.id.btn_login);
-
         passwordErrorTextView = findViewById(R.id.tv_passwordError);
-
         passwordEditText.addTextChangedListener(passwordTextWatcher);
-
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,28 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
                             if (!passwordEditText.getText().toString().equals(repeatPasswordEditText.getText().toString())) {
                                 Toast.makeText(RegisterActivity.this, "Passwords do not match.", Toast.LENGTH_SHORT).show();
                             } else {
-
-                                //En caso de que todos los campos sean correctos
-                                // Construir el cuerpo de la solicitud
-                                JSONObject requestBody = new JSONObject();
-                                try {
-                                    requestBody.put("name", nameEditText.getText().toString());
-                                    requestBody.put("email", emailEditText.getText().toString());
-                                    requestBody.put("password", passwordEditText.getText().toString());
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-
-                                // Enviar la solicitud POST a la API
-                                OkHttpClient client = new OkHttpClient();
-                                MediaType mediaType = MediaType.parse("application/json");
-                                RequestBody body = RequestBody.create(mediaType, requestBody.toString());
-                                Request request = new Request.Builder()
-                                        .url("https://balandrau.salle.url.edu/i3/socialgift/api/v1/users")
-                                        .post(body)
-                                        .build();
-
-                                new CreateUserTask(requestBody).execute();
+                                APIUser.register(nameEditText.getText().toString(),emailEditText.getText().toString(),passwordEditText.getText().toString(), RegisterActivity.this);
                             }
                         }
                     }
@@ -122,10 +87,6 @@ public class RegisterActivity extends AppCompatActivity {
                 passwordErrorTextView.setVisibility(View.VISIBLE);
             }
         }
-
-
-
-
     };
 
     /**
