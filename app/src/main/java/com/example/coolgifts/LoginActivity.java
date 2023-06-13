@@ -2,6 +2,7 @@ package com.example.coolgifts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,5 +40,9 @@ public class LoginActivity extends AppCompatActivity {
                 APIUser.login(textMail.getText().toString(),textPassword.getText().toString(), LoginActivity.this);
             }
         });
+    }
+    public void startMenu(){
+        Intent loginIntent = new Intent(this, MenuActivity.class);
+        startActivity(loginIntent);
     }
 }

@@ -2,6 +2,7 @@ package com.example.coolgifts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,7 +18,6 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
 public class RegisterActivity extends AppCompatActivity {
-
 
     private EditText nameEditText;
     private EditText emailEditText;
@@ -67,7 +67,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private TextWatcher passwordTextWatcher = new TextWatcher() {
         @Override
@@ -120,5 +119,9 @@ public class RegisterActivity extends AppCompatActivity {
             isValid = password.matches(regex);
         }
         return isValid;
+    }
+    public void startMenu(){
+        Intent loginIntent = new Intent(this, MenuActivity.class);
+        startActivity(loginIntent);
     }
 }
