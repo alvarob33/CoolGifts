@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <ImageButton
-        android:id="@+id/imageButton7Icono_Usuario"
+        android:id="@+id/imageButtonIconoUsuario"
         android:layout_width="106dp"
         android:layout_height="94dp"
         android:layout_marginStart="270dp"
@@ -42,7 +42,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icono_usuario_peque_o" />
+        app:srcCompat="@drawable/icono_usuario_peque_o"
+        android:onClick="onImageButtonIconoUsuarioClick"/>
 
     <ImageView
         android:id="@+id/imageView5"
@@ -66,7 +67,7 @@
         app:srcCompat="@drawable/icono_regalo" />
 
     <ImageButton
-        android:id="@+id/imageButton5AddFriend"
+        android:id="@+id/imageButtonFriends"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="250dp"
@@ -76,36 +77,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/add_friend__1___1_" />
+        app:srcCompat="@drawable/add_friend__1___1_"
+        android:onClick="onImageButtonFriendsClick"/>
 
     <ImageButton
-        android:id="@+id/imageButton4Gift"
+        android:id="@+id/imageButtonGift"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="270dp"
         android:layout_marginEnd="110dp"
         android:background="FFACAC"
+        android:onClick="onImageButtonGiftClick"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton5AddFriend"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonFriends"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/giftbox__1_" />
 
     <ImageButton
-        android:id="@+id/imageButton2Message"
+        android:id="@+id/imageButtonMessage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="550dp"
         android:layout_marginEnd="110dp"
         android:background="#FFACAC"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton3Search"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/email__1_" />
+        app:srcCompat="@drawable/email__1_"
+        android:onClick="onImageButtonMessageClick"/>
 
     <ImageButton
-        android:id="@+id/imageButton3Search"
+        android:id="@+id/imageButtonSearch"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="250dp"
@@ -115,6 +119,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/search__1_" />
+        app:srcCompat="@drawable/search__1_"
+        android:onClick="onImageButtonSearchClick"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
