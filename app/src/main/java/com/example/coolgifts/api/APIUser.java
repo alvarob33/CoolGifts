@@ -34,21 +34,21 @@ public class APIUser {
      }
      RequestQueue queue = Volley.newRequestQueue(loginActivity);
      JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/users/login",credenciales,
-     new Response.Listener<JSONObject>() {
 
-         @Override
-         public void onResponse(JSONObject response) {
-             Log.d("Response: ", response.toString());
-             //añadir guardado del token y inicio de la pagina principal de menus
-             loginActivity.startMenu();
-         }
-     }, new Response.ErrorListener(){
-
-         @Override
-         public void onErrorResponse(VolleyError error) {
-             Log.e("error: ", error.getMessage());
-         }
-     });
+             response -> {
+                 Log.d("Response: ", response.toString());
+                 //añadir guardado del token y inicio de la pagina principal de menus
+                 loginActivity.startMenu();
+             },
+             error ->{
+                 int statusCode = error.networkResponse.statusCode;
+                 if(statusCode == 401){
+                    loginActivity.setTextMail();
+                    loginActivity.setTextMail();
+                 }else{
+                     Log.e("error: ", error.getMessage());
+                 }
+             });
      queue.add(jor);
  }
 
@@ -103,11 +103,19 @@ public class APIUser {
                         password2 = (String) response.get("password");
                         loginAfterRegist(email2,password2,registerActivity);
                     } catch (JSONException e) {
+
                         throw new RuntimeException(e);
                     }
                 },
 
-                error -> Log.e("error: ", error.getMessage()));
+                error -> {
+                    int statusCode = error.networkResponse.statusCode;
+                    if (statusCode == 409) {
+                        registerActivity.setEmailEditText();
+                    } else {
+                        Log.e("error: ", error.getMessage());
+                    }
+                });
 
         queue.add(jor);
     }

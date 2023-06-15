@@ -2,6 +2,7 @@ package com.example.coolgifts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -123,5 +124,10 @@ public class RegisterActivity extends AppCompatActivity {
     public void startMenu(){
         Intent loginIntent = new Intent(this, MenuActivity.class);
         startActivity(loginIntent);
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void setEmailEditText() {
+        this.emailEditText.setText("EMAIL ALREADY EXIST");
     }
 }
