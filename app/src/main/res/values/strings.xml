@@ -5,4 +5,6 @@
 
     <string name="password_error">Password needs at least 8 characters, 1 uppercase and 1 number.</string>
 
+    <string name="friends">FRIENDS</string>
+    <string name="wishlists">WISH LISTS</string>
 </resources>
