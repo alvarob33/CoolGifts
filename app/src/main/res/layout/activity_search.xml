@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FBD7D7"
-    tools:context=".WishListActivity">
+    tools:context=".SearchActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView8"
         android:layout_width="1000dp"
         android:layout_height="1000dp"
         android:layout_marginBottom="490dp"
@@ -18,44 +18,35 @@
         app:srcCompat="@drawable/circle" />
 
     <ImageButton
-        android:id="@+id/imageButtonHome2"
+        android:id="@+id/imageButtonHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="300dp"
-        android:background="#FFBEBE"
+        android:background="#FCB4B4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home_btn_2" />
 
     <ImageButton
-        android:id="@+id/imageButton2Perfil"
+        android:id="@+id/imageButtonPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="300dp"
         android:layout_marginTop="20dp"
-        android:background="#FFBEBE"
+        android:background="#FCB4B4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icono_usuario_2" />
 
-    <ImageView
-        android:id="@+id/imageView9FotoPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icono_usuario_peque_o" />
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
+        android:layout_marginBottom="430dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -65,7 +56,7 @@
             android:layout_width="300dp"
             android:layout_height="48dp"
             android:fontFamily="sans-serif"
-            android:text="@string/wishlists"
+            android:text="@string/search"
             android:textColor="#000000"
             android:textSize="40sp"
             android:textStyle="bold" />
@@ -78,5 +69,29 @@
 
     </LinearLayout>
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/WriteBar"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="200dp"
+        android:background="#FCE5E5"
+        android:hint="Search..."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton7Lupa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:background="#FCE5E5"
+        app:layout_constraintBottom_toBottomOf="@+id/WriteBar"
+        app:layout_constraintEnd_toEndOf="@+id/WriteBar"
+        app:layout_constraintStart_toStartOf="@+id/WriteBar"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:srcCompat="@drawable/icono_lupa_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

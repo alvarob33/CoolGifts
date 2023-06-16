@@ -29,28 +29,17 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //TODO: Descommentar les funcions un cop s'hagin creat les activities corresponents i
-    // s'hagin assignat dins de Intent on hi ha 'Activity1.class'.
-
-    /*
-    public void onImageButtonIconoUsuarioClick(View view) {
-        // Quan es selecciona la opcio Perfil (IconoUsuario)
-        Intent intent = new Intent(MenuActivity.this, Activity1.class); //TODO: Modificar l'activity corresponent a la del Perfil d'usuari
-        startActivity(intent);
-    }
-
     public void onImageButtonMessageClick(View view) {
         // Quan es selecciona la opcio Missatges (Message)
-        Intent intent = new Intent(MenuActivity.this, Activity1.class); //TODO: Modificar l'activity corresponent a la de Missatges
+        Intent intent = new Intent(MenuActivity.this, MessagesActivity.class);
         startActivity(intent);
     }
 
     public void onImageButtonSearchClick(View view) {
         // Quan es selecciona la opcio Cercar (Search)
-        Intent intent = new Intent(MenuActivity.this, Activity1.class); //TODO: Modificar l'activity corresponent a la de Buscar
+        Intent intent = new Intent(MenuActivity.this, SearchActivity.class);
         startActivity(intent);
     }
 
-     */
 
 }

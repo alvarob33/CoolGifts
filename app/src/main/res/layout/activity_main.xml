@@ -13,11 +13,13 @@
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="80dp"
         android:fontFamily="sans-serif"
         android:text="@string/app_name"
         android:textColor="#000000"
         android:textSize="60sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,10 +29,12 @@
         android:id="@+id/imageView3"
         android:layout_width="767dp"
         android:layout_height="779dp"
+        android:layout_marginTop="11dp"
         android:layout_marginBottom="-340dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appNameTextView2"
         app:srcCompat="@drawable/shadow_circle_" />
 
     <Button
@@ -59,7 +63,7 @@
         android:layout_below="@+id/loginButton"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="580dp"
         android:backgroundTint="#F67070"
         android:fontFamily="sans-serif"
         android:text="@string/register"
@@ -69,7 +73,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView6"

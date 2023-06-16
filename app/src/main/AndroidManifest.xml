@@ -17,6 +17,15 @@
             android:name=".PresentsActivity"
             android:exported="false" />
         <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MessagesActivity"
+            android:exported="false" />
+        <activity
             android:name=".WishActivity"
             android:exported="false" />
         <activity

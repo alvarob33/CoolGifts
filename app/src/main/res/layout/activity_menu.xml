@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FBD7D7"
+    android:background="#FFFEABAB"
     tools:context=".MenuActivity">
 
     <ImageView
@@ -18,42 +18,47 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/oip" />
 
-    <TextView
-        android:id="@+id/AppNameTextView"
-        android:layout_width="268dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/app_name"
-        android:textColor="#000000"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
     <ImageButton
         android:id="@+id/imageButtonIconoUsuario"
         android:layout_width="106dp"
         android:layout_height="94dp"
         android:layout_marginStart="270dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@android:color/transparent"
+        android:onClick="onImageButtonIconoUsuarioClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icono_usuario_peque_o"
-        android:onClick="onImageButtonIconoUsuarioClick"/>
+        app:srcCompat="@drawable/icono_usuario_peque_o" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="767dp"
         android:layout_height="779dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="-340dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
         app:srcCompat="@drawable/shadow_circle_" />
+
+    <TextView
+        android:id="@+id/AppNameTextView"
+        android:layout_width="268dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="350dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/app_name"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -72,7 +77,8 @@
         android:layout_height="100dp"
         android:layout_marginStart="250dp"
         android:layout_marginTop="270dp"
-        android:background="#FFACAC"
+        android:background="#FFBEBE"
+        android:backgroundTint="#FEABAB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +92,8 @@
         android:layout_height="100dp"
         android:layout_marginTop="270dp"
         android:layout_marginEnd="110dp"
-        android:background="#FFACAC"
+        android:background="#FFFEABAB"
+        android:onClick="onImageButtonGiftClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonFriends"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +106,8 @@
         android:layout_height="100dp"
         android:layout_marginTop="550dp"
         android:layout_marginEnd="110dp"
-        android:background="#FFACAC"
+        android:background="#FFFEABAB"
+        android:backgroundTint="#FEABAB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonSearch"
         app:layout_constraintStart_toStartOf="parent"
@@ -113,7 +121,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="250dp"
         android:layout_marginTop="550dp"
-        android:background="#FFACAC"
+        android:background="#FFFEABAB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
