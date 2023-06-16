@@ -37,7 +37,13 @@ public class APIUser {
 
              response -> {
                  Log.d("Response: ", response.toString());
-                 //añadir guardado del token y inicio de la pagina principal de menus
+                 //Guardado del token
+                 try {
+                     LoginToken.saveToken((String) response.get("accessToken"));
+                 } catch (JSONException e) {
+                     throw new RuntimeException(e);
+                 }
+                 //Inicio Menu
                  loginActivity.startMenu();
              },
              error ->{
@@ -67,8 +73,14 @@ public class APIUser {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d("Response: ", response.toString());
+                        //Guardado del token
+                        try {
+                            LoginToken.saveToken((String) response.get("accessToken"));
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                        //Inicio Menu
                         registerActivity.startMenu();
-                        //guardar token
                     }
                 }, new Response.ErrorListener(){
 
