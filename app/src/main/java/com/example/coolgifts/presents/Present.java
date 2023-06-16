@@ -52,4 +52,11 @@ public class Present {
         this.categoryId = categoryId;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
 }
