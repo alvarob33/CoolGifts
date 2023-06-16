@@ -26,4 +26,5 @@ public class Wishlist {
         this.creationDate = creationDate;
         this.endDate = endDate;
     }
+
 }
