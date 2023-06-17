@@ -27,7 +27,16 @@ public class Wishlist {
         this.endDate = endDate;
     }
 
+    public Wishlist(String name, LocalDateTime endDate) {
+        this.name = name;
+        this.endDate = endDate;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
     }
 }

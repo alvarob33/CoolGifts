@@ -25,6 +25,55 @@ import java.util.Map;
 
 public class APIWishlist {
 
+    public static void createWishlist(Wishlist newWishlist, Activity activity) {
+
+        //Obtenemos token del usuario registrado
+        LoginToken loginToken;
+        try {
+            loginToken = LoginToken.getInstance();
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
+
+        JSONObject wishlist = new JSONObject();
+        try{
+            wishlist.put("name", newWishlist.getName());
+            wishlist.put("description", "");
+            wishlist.put("end_date", newWishlist.getEndDate());
+        }catch (Exception e){
+            Log.e("Error","Error añadiendo al Json");
+        }
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/wishlists",wishlist,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response: ", response.toString());
+                        //Guardado del token
+                        try {
+                            LoginToken.saveToken((String) response.get("accessToken"));
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }, new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("error: ", error.getMessage());
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                params.put("Authorization", "Bearer " + loginToken.getToken());
+                return params;
+            }
+        };
+        queue.add(jor);
+    }
+
     public static ArrayList<Wishlist> getWishlistsFromCurrentUser(Activity activity) {
 
         //Obtenemos token del usuario registrado

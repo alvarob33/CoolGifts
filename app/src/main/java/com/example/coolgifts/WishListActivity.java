@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,15 @@ public class WishListActivity extends AppCompatActivity {
         if (userId == LOGGED_USER) {
             //Hacemos el boton de anadir wishlist visible
             btnNewWishlist.setVisibility(View.VISIBLE);
+            btnNewWishlist.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Quan es selecciona la opcio Amistats (Friends)
+                    Intent intent = new Intent(WishListActivity.this, CreateWishlistActivity.class);
+                    startActivity(intent);
+
+                }
+            });
             //Obtenemos wishlists
             wishlists = APIWishlist.getWishlistsFromCurrentUser(this);
 
