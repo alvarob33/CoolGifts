@@ -75,4 +75,9 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder
             deleteIcon = itemView.findViewById(R.id.delete_icon);
         }
     }
+
+    public void addWishlist(Wishlist wishlist) {
+        wishlists.add(wishlist);
+        notifyDataSetChanged();
+    }
 }

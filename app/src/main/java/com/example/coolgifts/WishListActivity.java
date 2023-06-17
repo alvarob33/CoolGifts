@@ -51,18 +51,24 @@ public class WishListActivity extends AppCompatActivity {
 
                 }
             });
-            //Obtenemos wishlists
-            wishlists = APIWishlist.getWishlistsFromCurrentUser(this);
 
-
+            ArrayList<Wishlist> wishlists = new ArrayList<>();
+            //Creamos adapter
             wishAdapter = new WishAdapter(wishlists, true, this);
+            //Obtenemos wishlists
+            APIWishlist.getWishlistsFromCurrentUser(wishlists, this, wishAdapter);
+
+
         } else {
             //Hacemos el boton de anadir wishlist invisible
             btnNewWishlist.setVisibility(View.INVISIBLE);
-            //Obtenemos wishlists
-            wishlists = APIWishlist.getWishlistsFromUser(userId, this);
 
+            ArrayList<Wishlist> wishlists = new ArrayList<>();
+            //Creamos adapter
             wishAdapter = new WishAdapter(wishlists, false, this);
+            //Obtenemos wishlists
+            APIWishlist.getWishlistsFromUser(userId, wishlists, this, wishAdapter);
+
         }
 
         wishListRecyclerView.setLayoutManager(new LinearLayoutManager(this));

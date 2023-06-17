@@ -10,14 +10,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.coolgifts.LoginActivity;
 import com.example.coolgifts.presents.Present;
-import com.example.coolgifts.wishlists.Wishlist;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,7 +44,12 @@ public class APIPresent {
                             present.setLink(response.getString("link"));
                             present.setPhoto(response.getString("photo"));
                             present.setPrice(response.getDouble("price"));
-                            present.setCategoryId(response.getInt("categoryIds"));
+                            JSONArray categoryIdsArray = response.getJSONArray("categoryIds");
+                            int[] categoryIds = new int[categoryIdsArray.length()];
+                            for (int i = 0; i < categoryIdsArray.length(); i++) {
+                                categoryIds[i] = categoryIdsArray.getInt(i);
+                            }
+                            present.setCategoryIds(categoryIds);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }

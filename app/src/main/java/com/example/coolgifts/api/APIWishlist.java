@@ -8,10 +8,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.coolgifts.RegisterActivity;
 import com.example.coolgifts.presents.Present;
+import com.example.coolgifts.wishlists.WishAdapter;
 import com.example.coolgifts.wishlists.Wishlist;
 
 import org.json.JSONArray;
@@ -19,6 +21,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,12 +53,7 @@ public class APIWishlist {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d("Response: ", response.toString());
-                        //Guardado del token
-                        try {
-                            LoginToken.saveToken((String) response.get("accessToken"));
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
+
                     }
                 }, new Response.ErrorListener(){
 
@@ -74,7 +73,7 @@ public class APIWishlist {
         queue.add(jor);
     }
 
-    public static ArrayList<Wishlist> getWishlistsFromCurrentUser(Activity activity) {
+    public static void getWishlistsFromCurrentUser(ArrayList<Wishlist> wishlists, Activity activity, WishAdapter wishAdapter) {
 
         //Obtenemos token del usuario registrado
         LoginToken loginToken;
@@ -84,17 +83,15 @@ public class APIWishlist {
             throw new RuntimeException(e);
         }
 
-        ArrayList<Wishlist> wishlists = new ArrayList<>();
         //Peticion
         RequestQueue queue = Volley.newRequestQueue(activity);
-        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/users/" +loginToken.getId()+ "/wishlists", null,
-                new Response.Listener<JSONObject>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "https://balandrau.salle.url.edu/i3/socialgift/api/v1/users/" + loginToken.getId() + "/wishlists", null,
+                new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONArray response) {
                         Log.d("Response: ", response.toString());
                         try {
-                            ArrayList<Wishlist> parsedWishlists = parseWishlistsFromJSON(response, activity);
-                            wishlists.addAll(parsedWishlists);
+                            parseWishlistsFromJSON(response, activity, wishAdapter);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -115,11 +112,10 @@ public class APIWishlist {
                 return params;
             }
         };
-        queue.add(jor);
-        return wishlists;
+        queue.add(jsonArrayRequest);
     }
 
-    public static ArrayList<Wishlist> getWishlistsFromUser(int userId, Activity activity) {
+    public static void getWishlistsFromUser(int userId, ArrayList<Wishlist> wishlists, Activity activity, WishAdapter wishAdapter) {
 
         //Obtenemos token del usuario registrado
         LoginToken loginToken;
@@ -129,17 +125,15 @@ public class APIWishlist {
             throw new RuntimeException(e);
         }
 
-        ArrayList<Wishlist> wishlists = new ArrayList<>();
         //Peticion
         RequestQueue queue = Volley.newRequestQueue(activity);
-        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/users/" +userId+ "/wishlists", null,
-                new Response.Listener<JSONObject>() {
+        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.GET,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/users/" +userId+ "/wishlists", null,
+                new Response.Listener<JSONArray >() {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONArray response) {
                         Log.d("Response: ", response.toString());
                         try {
-                            ArrayList<Wishlist> parsedWishlists = parseWishlistsFromJSON(response, activity);
-                            wishlists.addAll(parsedWishlists);
+                            parseWishlistsFromJSON(response, activity, wishAdapter);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -160,15 +154,13 @@ public class APIWishlist {
                 return params;
             }
         };
-        queue.add(jor);
-        return wishlists;
+        queue.add(jar);
     }
 
 
-    private static ArrayList<Wishlist> parseWishlistsFromJSON(JSONObject jsonObject, Activity activity) throws JSONException {
-        ArrayList<Wishlist> wishlists = new ArrayList<>();
+    private static void parseWishlistsFromJSON(JSONArray wishlistArray, Activity activity, WishAdapter wishAdapter) throws JSONException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
-        JSONArray wishlistArray = jsonObject.getJSONArray("wishlist");
         for (int i = 0; i < wishlistArray.length(); i++) {
             JSONObject wishlistObject = wishlistArray.getJSONObject(i);
 
@@ -186,19 +178,33 @@ public class APIWishlist {
                 int wishlistId = giftObject.getInt("wishlist_id");
                 String productUrl = giftObject.getString("product_url");
                 int priority = giftObject.getInt("priority");
-                boolean booked = giftObject.getBoolean("booked");
+                int booked = giftObject.getInt("booked");
 
                 Present present = new Present(giftId, wishlistId, productUrl, priority, booked, activity);
                 gifts.add(present);
             }
 
-            LocalDateTime creationDate = LocalDateTime.parse(wishlistObject.getString("creation_date"));
-            LocalDateTime endDate = LocalDateTime.parse(wishlistObject.getString("end_date"));
+            String creationDateString = wishlistObject.getString("creation_date");
+            LocalDateTime creationDate;
+            try {
+                creationDate = LocalDateTime.parse(creationDateString, formatter);
+            } catch (DateTimeParseException e) {
+                throw new RuntimeException("Error parsing creation_date: " + creationDateString, e);
+            }
+
+            String endDateString = wishlistObject.getString("end_date");
+            LocalDateTime endDate = null;
+            if (endDateString != null && !endDateString.isEmpty() && !endDateString.equals("null")) {
+                try {
+                    endDate = LocalDateTime.parse(endDateString, formatter);
+                } catch (DateTimeParseException e) {
+                    throw new RuntimeException("Error parsing end_date: " + endDateString, e);
+                }
+            }
 
             Wishlist wishlist = new Wishlist(id, name, description, userId, gifts, creationDate, endDate);
-            wishlists.add(wishlist);
+            wishAdapter.addWishlist(wishlist);
         }
 
-        return wishlists;
     }
 }

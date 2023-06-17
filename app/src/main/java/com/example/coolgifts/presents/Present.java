@@ -8,7 +8,7 @@ public class Present {
     private int id;
     private int wishlistId;
     private int priority;
-    private boolean booked;
+    private int booked;
 
     //Product atributes
     private String name;
@@ -16,10 +16,10 @@ public class Present {
     private String link;
     private String photo;
     private double price;
-    private int categoryId;
+    private int[] categoryIds;
 
 
-    public Present(int id, int wishlistId, String productUrl, int priority, boolean booked, Activity activity) {
+    public Present(int id, int wishlistId, String productUrl, int priority, int booked, Activity activity) {
         this.id = id;
         this.wishlistId = wishlistId;
         this.priority = priority;
@@ -48,8 +48,8 @@ public class Present {
         this.price = price;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategoryIds(int[] categoryIds) {
+        this.categoryIds = categoryIds;
     }
 
     public String getName() {
