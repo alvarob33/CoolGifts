@@ -27,4 +27,7 @@ public class Wishlist {
         this.endDate = endDate;
     }
 
+    public String getName() {
+        return name;
+    }
 }

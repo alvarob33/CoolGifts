@@ -26,13 +26,13 @@
             android:name=".MessagesActivity"
             android:exported="false" />
         <activity
-            android:name=".WishActivity"
+            android:name=".WishListActivity"
             android:exported="false" />
         <activity
             android:name=".FriendsActivity"
             android:exported="false" />
         <activity
-            android:name=".PerfilActivity"
+            android:name=".api.PerfilActivity"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"

@@ -1,7 +1,5 @@
 package com.example.coolgifts.api;
 
-import static com.example.coolgifts.api.APIWishlist.parseWishlistsFromJSON;
-
 import android.app.Activity;
 import android.util.Log;
 

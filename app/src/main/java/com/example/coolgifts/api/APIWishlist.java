@@ -70,8 +70,53 @@ public class APIWishlist {
         return wishlists;
     }
 
+    public static ArrayList<Wishlist> getWishlistsFromUser(int userId, Activity activity) {
 
-    public static ArrayList<Wishlist> parseWishlistsFromJSON(JSONObject jsonObject, Activity activity) throws JSONException {
+        //Obtenemos token del usuario registrado
+        LoginToken loginToken;
+        try {
+            loginToken = LoginToken.getInstance();
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
+
+        ArrayList<Wishlist> wishlists = new ArrayList<>();
+        //Peticion
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/users/" +userId+ "/wishlists", null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response: ", response.toString());
+                        try {
+                            ArrayList<Wishlist> parsedWishlists = parseWishlistsFromJSON(response, activity);
+                            wishlists.addAll(parsedWishlists);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+                }, new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("error: ", error.getMessage());
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                params.put("Authorization", "Bearer " + loginToken.getToken());
+                return params;
+            }
+        };
+        queue.add(jor);
+        return wishlists;
+    }
+
+
+    private static ArrayList<Wishlist> parseWishlistsFromJSON(JSONObject jsonObject, Activity activity) throws JSONException {
         ArrayList<Wishlist> wishlists = new ArrayList<>();
 
         JSONArray wishlistArray = jsonObject.getJSONArray("wishlist");
