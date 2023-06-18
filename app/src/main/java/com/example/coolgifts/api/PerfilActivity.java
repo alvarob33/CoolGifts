@@ -10,6 +10,7 @@ import com.example.coolgifts.BasicActivity;
 import com.example.coolgifts.MainActivity;
 import com.example.coolgifts.MenuActivity;
 import com.example.coolgifts.R;
+import com.example.coolgifts.users.User;
 
 public class PerfilActivity extends AppCompatActivity {
 
@@ -19,6 +20,11 @@ public class PerfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_perfil);
 
 
+    }
+
+
+    public void showUserData(User user) {
+        //mostrar informacion de user por la activity
     }
     public void onClickHome(View view) {
         Intent MenuIntent = new Intent(this, MenuActivity.class);

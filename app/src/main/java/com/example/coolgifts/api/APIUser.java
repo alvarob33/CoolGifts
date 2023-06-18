@@ -192,5 +192,60 @@ public class APIUser {
         }
 
     }
+
+    public static void getUserWithId(int id,PerfilActivity activity) {
+
+        //Obtenemos token del usuario registrado
+        LoginToken loginToken;
+        try {
+            loginToken = LoginToken.getInstance();
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
+
+        //Peticion
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/users/" +id, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response: ", response.toString());
+                        //Mostrar usuario
+                        try {
+                            activity.showUserData(parseUserFromJSON(response));
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+                }, new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("error: ", error.getMessage());
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                params.put("Authorization", "Bearer " + loginToken.getToken());
+                return params;
+            }
+        };
+        queue.add(jor);
+
+    }
+
+    private static User parseUserFromJSON(JSONObject jsonUser) throws JSONException {
+
+        int id = jsonUser.getInt("id");
+        String name = jsonUser.getString("name");
+        String email = jsonUser.getString("email");
+        String image = jsonUser.getString("image");
+
+        return new User(id, name, email, image);
+    }
+
 }
 
