@@ -123,6 +123,174 @@ public class APIPresent {
         queue.add(jsonArrayRequest);
     }
 
+    public static void createGift(int wishlistID,String productURL, Activity activity) {
+
+        //Obtenemos token del usuario registrado
+        LoginToken loginToken;
+        try {
+            loginToken = LoginToken.getInstance();
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
+        JSONObject credenciales = new JSONObject();
+        try{
+            credenciales.put("wishlist_id", wishlistID);
+            credenciales.put("product_url", productURL);
+            credenciales.put("priority", 33);
+        }catch (Exception e){
+            Log.e("Error","Error añadiendo al Json");
+        }
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/gifts",credenciales ,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response: ", response.toString());
+
+                    }
+                }, new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                int statusCode = error.networkResponse.statusCode;
+                if (statusCode == 409) {
+                    //especificar error
+                } else {
+                    Log.e("error: ", error.getMessage());
+                }
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                params.put("Authorization", "Bearer " + loginToken.getToken());
+                return params;
+            }
+        };
+        queue.add(jor);
+    }
+    public static void delateGift(int giftID, Activity activity) {
+
+        //Obtenemos token del usuario registrado
+        LoginToken loginToken;
+        try {
+            loginToken = LoginToken.getInstance();
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
+
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.DELETE,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/gifts/"+giftID,null ,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response: ", response.toString());
+
+                    }
+                }, new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                int statusCode = error.networkResponse.statusCode;
+                if (statusCode == 409) {
+                    //especificar error
+                } else {
+                    Log.e("error: ", error.getMessage());
+                }
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                params.put("Authorization", "Bearer " + loginToken.getToken());
+                return params;
+            }
+        };
+        queue.add(jor);
+    }
+    public static void createBook(int giftID, Activity activity) {
+
+        //Obtenemos token del usuario registrado
+        LoginToken loginToken;
+        try {
+            loginToken = LoginToken.getInstance();
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
+
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/gifts/"+giftID+"/book",null ,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response: ", response.toString());
+
+                    }
+                }, new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                int statusCode = error.networkResponse.statusCode;
+                if (statusCode == 409) {
+                    //especificar error
+                } else {
+                    Log.e("error: ", error.getMessage());
+                }
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                params.put("Authorization", "Bearer " + loginToken.getToken());
+                return params;
+            }
+        };
+        queue.add(jor);
+    }
+    public static void createBook(int giftID, Activity activity) {
+
+        //Obtenemos token del usuario registrado
+        LoginToken loginToken;
+        try {
+            loginToken = LoginToken.getInstance();
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
+
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.DELETE,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/gifts/"+giftID+"/book",null ,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response: ", response.toString());
+
+                    }
+                }, new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                int statusCode = error.networkResponse.statusCode;
+                if (statusCode == 409) {
+                    //especificar error
+                } else {
+                    Log.e("error: ", error.getMessage());
+                }
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                params.put("Authorization", "Bearer " + loginToken.getToken());
+                return params;
+            }
+        };
+        queue.add(jor);
+    }
+
     private static void parseProductsFromJSON(JSONArray wishlistArray, PresentsAdapter presentsAdapter, Activity activity) throws JSONException {
 
         for (int i = 0; i < wishlistArray.length(); i++) {
