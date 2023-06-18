@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView8">
 
         <TextView
-            android:id="@+id/textViewTitolObjecte"
+            android:id="@+id/tvGiftName"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:fontFamily="sans-serif"

@@ -1,6 +1,7 @@
 package com.example.coolgifts.presents;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coolgifts.PresentsActivity;
+import com.example.coolgifts.WishViewActivity;
 import com.example.coolgifts.api.APIPresent;
 import com.example.coolgifts.api.APIWishlist;
 import com.example.coolgifts.wishlists.Wishlist;
@@ -42,12 +44,36 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsHolder>{
             case PresentsAdapter.NO_EDITABLE:
                 holder.getBtnDeletePresent().setVisibility(View.INVISIBLE);
                 holder.getIbAddPresent().setVisibility(View.INVISIBLE);
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        // Obtener la posición del elemento clicado
+                        WishViewActivity.setPresent(present);
+                        Intent intent = new Intent(activity, WishViewActivity.class);
+                        activity.startActivity(intent);
+
+                    }
+                });
                 break;
 
             case PresentsAdapter.EDITABLE:
                 holder.getIbAddPresent().setVisibility(View.INVISIBLE);
                 //configuramos boton eliminar
                 holder.getBtnDeletePresent().setVisibility(View.VISIBLE);
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        // Obtener la posición del elemento clicado
+                        WishViewActivity.setPresent(present);
+                        Intent intent = new Intent(activity, WishViewActivity.class);
+                        activity.startActivity(intent);
+
+                    }
+                });
                 holder.getBtnDeletePresent().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

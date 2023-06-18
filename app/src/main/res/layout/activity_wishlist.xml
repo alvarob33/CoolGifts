@@ -27,7 +27,7 @@
         android:onClick="goHome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_btn" />
+        app:srcCompat="@drawable/home_btn_2" />
 
     <ImageButton
         android:id="@+id/imageButton2Perfil"
@@ -38,7 +38,7 @@
         android:background="#FFBEBE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icono_usuario" />
+        app:srcCompat="@drawable/icono_usuario_2" />
 
     <ImageView
         android:id="@+id/imageView9FotoPerfil"

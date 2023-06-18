@@ -2,30 +2,61 @@ package com.example.coolgifts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.coolgifts.api.APIPresent;
+import com.example.coolgifts.presents.Present;
 
 public class WishViewActivity extends AppCompatActivity {
 
 
-    ImageView fotoProducto;
-    TextView nombre;
-    TextView price;
-    TextView description;
+    private ImageView fotoProducto;
+    private TextView name;
+    private TextView price;
+    private TextView description;
+    private Button btnReserve;
+    private static Present present;
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish_view);
         fotoProducto = findViewById(R.id.imageView13);
-        nombre = findViewById(R.id.textViewTitolObjecte);
-        price = findViewById(R.id.textViewPrice);
-        description = findViewById(R.id.textView4);
+        name = findViewById(R.id.tvGiftName);
+        price = findViewById(R.id.tvGiftPrice);
+        description = findViewById(R.id.tvGiftDescription);
+        btnReserve = findViewById(R.id.btn_reserve);
+
+        name.setText(present.getName());
+        price.setText(present.getPrice() + " €");
+        description.setText(present.getDescription());
+
+        btnReserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Obtener la posición del elemento clicado
+                //APIPresent.createBook(present.getId(), WishViewActivity.this);
+                btnReserve.setVisibility(View.INVISIBLE);
+
+            }
+        });
+
         //no se como cambiar la foto, se ha de pedir a la lista de productos
         //nombre.setText(new_text);
         //price.setText(new_price);
         //description(new_description);
     }
 
+    public static void setPresent(Present present) {
+        WishViewActivity.present = present;
+    }
 }

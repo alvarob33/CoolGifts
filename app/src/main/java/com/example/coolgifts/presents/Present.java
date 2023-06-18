@@ -87,6 +87,10 @@ public class Present {
         return price;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setWishlistId(int wishlistId) {
         this.wishlistId = wishlistId;
     }

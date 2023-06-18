@@ -40,7 +40,7 @@
         app:srcCompat="@drawable/icono_usuario_2" />
 
     <TextView
-        android:id="@+id/textViewTitolObjecte"
+        android:id="@+id/tvGiftName"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
@@ -64,7 +64,7 @@
         app:srcCompat="@drawable/playst4" />
 
     <TextView
-        android:id="@+id/textViewPrice"
+        android:id="@+id/tvGiftPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -78,10 +78,10 @@
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitolObjecte" />
+        app:layout_constraintTop_toBottomOf="@+id/tvGiftName" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvGiftDescription"
         android:layout_width="332dp"
         android:layout_height="213dp"
         android:layout_marginTop="20dp"
@@ -90,11 +90,11 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/tvGiftPrice" />
 
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_reserve"
         android:layout_width="150dp"
         android:layout_height="58dp"
         android:layout_marginTop="10dp"
@@ -107,7 +107,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/tvGiftDescription" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

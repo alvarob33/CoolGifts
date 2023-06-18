@@ -35,7 +35,7 @@
         android:layout_marginBottom="46dp"
         android:background="@drawable/input_text_layout"
         android:hint="@string/your_password"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:paddingLeft="14dp"
         android:textColorHint="#B3B3B3"
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
