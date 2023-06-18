@@ -104,8 +104,8 @@
 
     <Button
         android:id="@+id/btn_login"
-        android:layout_width="130dp"
-        android:layout_height="60dp"
+        android:layout_width="150dp"
+        android:layout_height="58dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="#F67070"
         android:fontFamily="sans-serif"
