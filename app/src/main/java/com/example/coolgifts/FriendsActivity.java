@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.coolgifts.api.APIUser;
 import com.example.coolgifts.users.User;
@@ -39,5 +41,8 @@ public class FriendsActivity extends AppCompatActivity {
         APIUser.getFriendsFromCurrentUser(this, friendAdapter);
     }
 
-
+    public void goHome(View view) {
+        Intent goHome = new Intent(this, MenuActivity.class);
+        startActivity(goHome);
+    }
 }

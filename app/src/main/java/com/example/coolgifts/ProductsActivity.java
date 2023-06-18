@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.coolgifts.api.APIPresent;
 import com.example.coolgifts.presents.Present;
@@ -43,5 +45,10 @@ public class ProductsActivity extends AppCompatActivity {
         } else {
             adapter.notifyDataSetChanged();
         }
+    }
+
+    public void goHome(View view) {
+        Intent goHome = new Intent(this, MenuActivity.class);
+        startActivity(goHome);
     }
 }

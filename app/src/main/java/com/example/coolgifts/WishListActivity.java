@@ -86,4 +86,9 @@ public class WishListActivity extends AppCompatActivity {
     public static WishAdapter getWishAdapter() {
         return wishAdapter;
     }
+
+    public void goHome(View view) {
+        Intent goHome = new Intent(this, MenuActivity.class);
+        startActivity(goHome);
+    }
 }

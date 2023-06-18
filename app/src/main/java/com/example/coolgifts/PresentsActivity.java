@@ -80,4 +80,9 @@ public class PresentsActivity extends AppCompatActivity {
     public static PresentsAdapter getAdapter() {
         return adapter;
     }
+
+    public void goHome(View view) {
+        Intent goHome = new Intent(this, MenuActivity.class);
+        startActivity(goHome);
+    }
 }

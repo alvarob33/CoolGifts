@@ -23,6 +23,7 @@
         android:layout_height="80dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
+        android:onClick="goHome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home_btn" />
