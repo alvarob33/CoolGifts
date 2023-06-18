@@ -2,6 +2,7 @@ package com.example.coolgifts.users;
 public class User {
     int id;
     private String name;
+    private String password;
     private String email;
     private String image;
 
@@ -20,4 +21,11 @@ public class User {
         return name;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

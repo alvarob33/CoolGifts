@@ -12,29 +12,34 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coolgifts.MenuActivity;
+import com.example.coolgifts.PresentsActivity;
 import com.example.coolgifts.R;
 import com.example.coolgifts.WishListActivity;
 
 public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+    private int type;
     private Present present;
+
     private TextView tvName;
     private TextView tvPrice;
     private ImageView ivPhoto;
     private ImageButton btnDeletePresent;
+    private ImageButton ibAddPresent;
     private Activity activity;
 
-    public PresentsHolder(LayoutInflater inflater, ViewGroup parent, Activity
-            activity) {
+    public PresentsHolder(int type, LayoutInflater inflater, ViewGroup parent, Activity activity) {
         super(inflater.inflate(R.layout.list_element_present, parent, false));
 
         tvName = (TextView) itemView.findViewById(R.id.tvName);
         tvPrice = (TextView)itemView.findViewById(R.id.tvPrice);
         ivPhoto = (ImageView)itemView.findViewById(R.id.ivPresent);
         btnDeletePresent = (ImageButton) itemView.findViewById(R.id.btnDeletePresent);
+        ibAddPresent = (ImageButton) itemView.findViewById(R.id.ibAddPresent);
 
+        this.type = type;
         this.activity = activity;
-        itemView.setOnClickListener(this);  //establecer que todo el elemento es el istener
+        itemView.setOnClickListener(this);  //establecer que todo el elemento es el listener
 
     }
     public void bind(Present present) {
@@ -42,18 +47,10 @@ public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnCl
         tvName.setText(present.getName());
         tvPrice.setText(present.getPrice() + " €");
 
-        btnDeletePresent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Quan es selecciona la opcio Regals (WishList)
 
-                //TODO: que se elimine el present de la wishlist
-                /*Intent intent = new Intent(MenuActivity.this, WishListActivity.class);
-                intent.putExtra(WishListActivity.INTENT_USER_ID, WishListActivity.LOGGED_USER);
-                startActivity(intent);*/
 
-            }
-        });
+
+
 
     }
 
@@ -66,5 +63,13 @@ public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnCl
 
         activity.startActivityForResult(i, 1);*/
         //activity.moveDetailActivity
+    }
+
+    public ImageButton getBtnDeletePresent() {
+        return btnDeletePresent;
+    }
+
+    public ImageButton getIbAddPresent() {
+        return ibAddPresent;
     }
 }

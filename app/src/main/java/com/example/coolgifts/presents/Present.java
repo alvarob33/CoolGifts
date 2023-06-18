@@ -30,6 +30,23 @@ public class Present {
 
     }
 
+    //Para products
+    public Present(int id, String name, String description, String link, String photo, double price, int[] categoryIds, Activity activity) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.productUrl = "https://balandrau.salle.url.edu/i3/mercadoexpress/api/v1/products/" + id;
+        this.link = link;
+        this.photo = photo;
+        this.price = price;
+        this.categoryIds = categoryIds;
+
+        this.priority = 33;
+        this.booked = 0;
+        //APIPresent.setProductAtributes(this, productUrl, activity);
+    }
+
+
     public void setName(String name) {
         this.name = name;
     }
@@ -60,5 +77,9 @@ public class Present {
 
     public double getPrice() {
         return price;
+    }
+
+    public void setWishlistId(int wishlistId) {
+        this.wishlistId = wishlistId;
     }
 }

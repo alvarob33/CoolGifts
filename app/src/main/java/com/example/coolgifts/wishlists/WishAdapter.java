@@ -11,16 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.coolgifts.MenuActivity;
 import com.example.coolgifts.PresentsActivity;
 import com.example.coolgifts.R;
-import com.example.coolgifts.WishListActivity;
 
 import java.util.ArrayList;
 
 public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder> {
 
     public final static String WISHLIST_NAME = "WISHLIST_NAME";
+    public final static String IS_LOGGED_USER = "IS_LOGGED_USER";
     private ArrayList<Wishlist> wishlists;
     private Context context;
     private boolean isLoggedUser;
@@ -51,11 +50,12 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder
             public void onClick(View v) {
 
                 //Pasar los regalos a la otra activity
-                PresentsActivity.setPresents(wishlist.getPresents());
+                PresentsActivity.setWishlist(wishlist);
 
                 // Obtener la posición del elemento clicado
                 Intent intent = new Intent(context, PresentsActivity.class);
                 intent.putExtra(WISHLIST_NAME, wishlist.getName());
+                intent.putExtra(IS_LOGGED_USER, isLoggedUser);
                 context.startActivity(intent);
 
             }

@@ -24,7 +24,7 @@ public class WishListActivity extends AppCompatActivity {
     private Button btnNewWishlist;
 
 
-    private WishAdapter wishAdapter;
+    private static WishAdapter wishAdapter;
     private ArrayList<Wishlist> wishlists;
 
     private int userId;
@@ -81,5 +81,9 @@ public class WishListActivity extends AppCompatActivity {
 
     public int getUserId() {
         return userId;
+    }
+
+    public static WishAdapter getWishAdapter() {
+        return wishAdapter;
     }
 }
