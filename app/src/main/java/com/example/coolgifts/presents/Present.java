@@ -7,6 +7,7 @@ import com.example.coolgifts.api.APIPresent;
 public class Present {
     private int id;
     private int wishlistId;
+    private String productUrl;
     private int priority;
     private int booked;
 
@@ -22,6 +23,7 @@ public class Present {
     public Present(int id, int wishlistId, String productUrl, int priority, int booked, Activity activity) {
         this.id = id;
         this.wishlistId = wishlistId;
+        this.productUrl = productUrl;
         this.priority = priority;
         this.booked = booked;
         APIPresent.setProductAtributes(this, productUrl, activity);
