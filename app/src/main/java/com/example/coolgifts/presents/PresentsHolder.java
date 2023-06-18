@@ -50,8 +50,6 @@ public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnCl
 
 
 
-
-
     }
 
     @Override

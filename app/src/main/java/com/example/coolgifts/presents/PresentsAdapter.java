@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coolgifts.PresentsActivity;
+import com.example.coolgifts.api.APIPresent;
 import com.example.coolgifts.api.APIWishlist;
 import com.example.coolgifts.wishlists.Wishlist;
 
@@ -50,12 +51,9 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsHolder>{
                 holder.getBtnDeletePresent().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        // Quan es selecciona la opcio Regals (WishList)
 
-                        //TODO: que se elimine el present de la wishlist
-                    /*Intent intent = new Intent(MenuActivity.this, WishListActivity.class);
-                    intent.putExtra(WishListActivity.INTENT_USER_ID, WishListActivity.LOGGED_USER);
-                    startActivity(intent);*/
+                        APIPresent.deleteGift(present.getId(), activity);
+                        PresentsActivity.getAdapter().deletePresent(present);
 
                     }
                 });
@@ -67,14 +65,9 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsHolder>{
                 holder.getIbAddPresent().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        // Quan es selecciona la opcio Regals (WishList)
-
-                        //TODO: que se anada el present a la wishlist
                         present.setWishlistId(PresentsActivity.getWishlist().getId());
-                        addPresent(present);
-                        //TODO: que se anada bien en la api
-                        APIWishlist.editarWishlist(PresentsActivity.getWishlist(), activity);
-
+                        PresentsActivity.getAdapter().addPresent(present);
+                        APIPresent.createGift(PresentsActivity.getWishlist().getId(), present.getProductUrl(), activity);
 
                     }
                 });
@@ -92,7 +85,9 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsHolder>{
         notifyDataSetChanged();
     }
 
-    public void deletePresent() {
+    public void deletePresent(Present present) {
+        lPresent.remove(present);
+        notifyDataSetChanged();
 
     }
 }

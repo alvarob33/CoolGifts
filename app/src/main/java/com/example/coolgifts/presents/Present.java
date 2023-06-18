@@ -47,6 +47,14 @@ public class Present {
     }
 
 
+    public int getId() {
+        return id;
+    }
+
+    public String getProductUrl() {
+        return productUrl;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

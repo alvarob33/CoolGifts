@@ -13,17 +13,11 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.coolgifts.presents.Present;
 import com.example.coolgifts.presents.PresentsAdapter;
-import com.example.coolgifts.wishlists.WishAdapter;
-import com.example.coolgifts.wishlists.Wishlist;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -170,7 +164,7 @@ public class APIPresent {
         };
         queue.add(jor);
     }
-    public static void delateGift(int giftID, Activity activity) {
+    public static void deleteGift(int giftID, Activity activity) {
 
         //Obtenemos token del usuario registrado
         LoginToken loginToken;
