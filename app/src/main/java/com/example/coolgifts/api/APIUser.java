@@ -246,6 +246,40 @@ public class APIUser {
 
         return new User(id, name, email, image);
     }
+    public static void getUsersByString(Activity activity, String texto) {
 
+        //Obtenemos token del usuario registrado
+        LoginToken loginToken;
+        try {
+            loginToken = LoginToken.getInstance();
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
+
+        //Peticion
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "https://balandrau.salle.url.edu/i3/socialgift/api/v1/users/search" +texto, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d("Response: ", response.toString());
+                    }
+                }, new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("error: ", error.getMessage());
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                params.put("Authorization", "Bearer " + loginToken.getToken());
+                return params;
+            }
+        };
+        queue.add(jsonArrayRequest);
+    }
 }
 
