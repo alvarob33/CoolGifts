@@ -7,24 +7,23 @@
     android:background="#FBD7D7"
     tools:context=".WishViewActivity">
 
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="1000dp"
-            android:layout_height="1000dp"
-            android:layout_marginBottom="490dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/circle" />
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="1000dp"
+        android:layout_height="1000dp"
+        android:layout_marginTop="-760dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/circle" />
 
     <ImageButton
         android:id="@+id/imageButtonHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="300dp"
         android:background="#FEBDBD"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home_btn_2" />
@@ -33,11 +32,10 @@
         android:id="@+id/imageButtonPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="300dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:background="#FEBDBD"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icono_usuario_2" />
 
@@ -45,15 +43,13 @@
         android:id="@+id/textViewTitolObjecte"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="270dp"
         android:fontFamily="sans-serif"
         android:text="@string/playstation"
         android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,8 +57,7 @@
         android:id="@+id/imageView13"
         android:layout_width="134dp"
         android:layout_height="134dp"
-        android:layout_marginBottom="400dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -72,8 +67,8 @@
         android:id="@+id/textViewPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="240dp"
-        android:layout_marginBottom="350dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
         android:shadowColor="#000000"
         android:shadowDx="5"
         android:shadowDy="5"
@@ -82,8 +77,6 @@
         android:textColor="#FECD7E"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitolObjecte" />
 
@@ -92,11 +85,9 @@
         android:layout_width="332dp"
         android:layout_height="213dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="120dp"
         android:text="@string/wish_desc"
         android:textColor="#7E7A7A"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
