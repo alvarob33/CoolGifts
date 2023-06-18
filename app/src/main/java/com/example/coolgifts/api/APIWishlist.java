@@ -205,6 +205,58 @@ public class APIWishlist {
             Wishlist wishlist = new Wishlist(id, name, description, userId, gifts, creationDate, endDate);
             wishAdapter.addWishlist(wishlist);
         }
+    }
+    public static void editarWishlist( Wishlist newWishlist, Activity activity) {
 
+        //Obtenemos token del usuario registrado
+        LoginToken loginToken;
+        try {
+            loginToken = LoginToken.getInstance();
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
+        JSONObject wishlist = new JSONObject();
+        try{
+            wishlist.put("name", newWishlist.getName());
+            wishlist.put("description", "");
+            ArrayList<Present> presents = newWishlist.getPresents();
+            for(int i = 0; i<presents.size();i++){
+                wishlist.put("gifts",presents.get(i));
+            }
+            wishlist.put("creation_date", newWishlist.getCreationDate());
+            wishlist.put("end_date", newWishlist.getEndDate());
+        }catch (Exception e){
+            Log.e("Error","Error añadiendo al Json");
+        }
+
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.PUT,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/wishlists/" + newWishlist.getId(),wishlist ,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response: ", response.toString());
+
+                    }
+                }, new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                int statusCode = error.networkResponse.statusCode;
+                if (statusCode == 409) {
+                    //especificar error
+                } else {
+                    Log.e("error: ", error.getMessage());
+                }
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                params.put("Authorization", "Bearer " + loginToken.getToken());
+                return params;
+            }
+        };
+        queue.add(jor);
     }
 }

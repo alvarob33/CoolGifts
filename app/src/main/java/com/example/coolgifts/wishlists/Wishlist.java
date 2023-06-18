@@ -43,4 +43,16 @@ public class Wishlist {
     public ArrayList<Present> getPresents() {
         return presents;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
 }
