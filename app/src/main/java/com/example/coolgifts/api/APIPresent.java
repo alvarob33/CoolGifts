@@ -250,7 +250,7 @@ public class APIPresent {
         };
         queue.add(jor);
     }
-    public static void createBook(int giftID, Activity activity) {
+    public static void delateBook(int giftID, Activity activity) {
 
         //Obtenemos token del usuario registrado
         LoginToken loginToken;
