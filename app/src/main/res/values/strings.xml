@@ -4,10 +4,12 @@
     <string name="register">REGISTER</string>
 
     <string name="password_error">Password needs at least 8 characters, 1 uppercase and 1 number.</string>
-
+    <string name="nameWishList">Wishlist Name</string>
+    <string name="fechaList">Select the Wishlist End Date</string>
     <string name="users">FRIENDS</string>
     <string name="wishlists">WISH LISTS</string>
     <string name="messages">MESSAGES</string>
+    <string name="TituloFechaLista">Wishlist End Date</string>
     <string name="search">SEARCH</string>
     <string name="nombre_usuario_chat">Jose Pedro Salinas</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -25,5 +27,22 @@
     <string name="price400">400 €</string>
     <string name="wish_desc">Description about the product.</string>
     <string name="reserve">RESERVE</string>
+    <string name="save">SAVE</string>
+    <string name="log_in">LOG IN</string>
+    <string name="password">Password</string>
+    <string name="your_name">Your name</string>
+    <string name="your_password">Your password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="go">GO!</string>
+    <string name="new_present">NEW PRESENT</string>
+    <string name="lista_nregalos">Lista \nRegalos</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="name">Name</string>
+    <string name="repeat_your_password">Repeat your password</string>
+    <string name="passwordnotvisible">**********</string>
+    <string name="sign_out">SIGN OUT</string>
+    <string name="see">See</string>
 
 </resources>
