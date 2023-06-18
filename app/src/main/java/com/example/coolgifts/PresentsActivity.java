@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.coolgifts.api.ApiException;
+import com.example.coolgifts.api.LoginToken;
 import com.example.coolgifts.presents.Present;
 import com.example.coolgifts.presents.PresentsAdapter;
 import com.example.coolgifts.wishlists.WishAdapter;
@@ -39,15 +41,24 @@ public class PresentsActivity extends AppCompatActivity {
         //ajustamos nombre wishlist
         tvNombreLista.setText(getIntent().getStringExtra(WishAdapter.WISHLIST_NAME));
 
-        btnNewPresent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Todo: enviar a recycle view de products
-                Intent intent = new Intent(PresentsActivity.this, ProductsActivity.class);
-                startActivity(intent);
+        try {
+            if (WishListActivity.getUserId() == WishListActivity.LOGGED_USER || WishListActivity.getUserId() == LoginToken.getInstance().getId()) {
 
+                btnNewPresent.setVisibility(View.VISIBLE);
+                btnNewPresent.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(PresentsActivity.this, ProductsActivity.class);
+                        startActivity(intent);
+
+                    }
+                });
+            } else {
+                btnNewPresent.setVisibility(View.INVISIBLE);
             }
-        });
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
 
         //Configuramos recycle view
         updateUI();

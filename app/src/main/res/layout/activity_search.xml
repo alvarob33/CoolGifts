@@ -19,8 +19,8 @@
 
     <ImageButton
         android:id="@+id/imageButtonHome"
-        android:layout_width="82dp"
-        android:layout_height="63dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:background="#FCB4B4"
@@ -30,8 +30,8 @@
 
     <ImageButton
         android:id="@+id/imageButtonPerfil"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:background="#FCB4B4"
@@ -40,6 +40,7 @@
         app:srcCompat="@drawable/icono_usuario_2" />
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
@@ -70,13 +71,13 @@
         android:id="@+id/WriteBar"
         android:layout_width="350dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="200dp"
-        android:background="#FCE5E5"
-        android:hint="Search..."
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/input_text_layout"
+        android:hint="@string/search_text"
+        android:paddingStart="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
     <ImageButton
         android:id="@+id/imageButton7Lupa"
@@ -89,6 +90,16 @@
         app:layout_constraintStart_toStartOf="@+id/WriteBar"
         app:layout_constraintTop_toBottomOf="@+id/imageView8"
         app:srcCompat="@drawable/icono_lupa_search" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/WriteBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

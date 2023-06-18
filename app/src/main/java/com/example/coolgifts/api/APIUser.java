@@ -16,11 +16,13 @@ import com.example.coolgifts.PerfilActivity;
 import com.example.coolgifts.RegisterActivity;
 import com.example.coolgifts.users.User;
 import com.example.coolgifts.users.FriendAdapter;
+import com.example.coolgifts.users.UserAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -247,7 +249,7 @@ public class APIUser {
 
         return new User(id, name, email, image);
     }
-    public static void getUsersByString(Activity activity, String texto) {
+    public static void getUsersByString(String texto, Activity activity, UserAdapter adapter) {
 
         //Obtenemos token del usuario registrado
         LoginToken loginToken;
@@ -259,11 +261,17 @@ public class APIUser {
 
         //Peticion
         RequestQueue queue = Volley.newRequestQueue(activity);
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "https://balandrau.salle.url.edu/i3/socialgift/api/v1/users/search" +texto, null,
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "https://balandrau.salle.url.edu/i3/socialgift/api/v1/users/search?s=" +texto, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d("Response: ", response.toString());
+
+                        try {
+                            parseUsersFromJSON(response, adapter);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }, new Response.ErrorListener(){
 
@@ -281,6 +289,26 @@ public class APIUser {
             }
         };
         queue.add(jsonArrayRequest);
+    }
+
+    private static void parseUsersFromJSON(JSONArray usersArray, UserAdapter userAdapter) throws JSONException {
+
+        ArrayList<User> users = new ArrayList<>();
+
+        for (int i = 0; i < usersArray.length(); i++) {
+            JSONObject wishlistObject = usersArray.getJSONObject(i);
+
+            int id = wishlistObject.getInt("id");
+            String name = wishlistObject.getString("name");
+            String email = wishlistObject.getString("email");
+            String image = wishlistObject.getString("image");
+
+
+            users.add( new User(id, name, email, image) );
+
+        }
+        userAdapter.setUsers(users);
+
     }
 }
 

@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.coolgifts.api.APIWishlist;
+import com.example.coolgifts.api.ApiException;
+import com.example.coolgifts.api.LoginToken;
 import com.example.coolgifts.wishlists.WishAdapter;
 import com.example.coolgifts.wishlists.Wishlist;
 
@@ -27,7 +29,7 @@ public class WishListActivity extends AppCompatActivity {
     private static WishAdapter wishAdapter;
     private ArrayList<Wishlist> wishlists;
 
-    private int userId;
+    private static int userId;
 
 
 
@@ -42,36 +44,40 @@ public class WishListActivity extends AppCompatActivity {
         //comprobamos si la lista de deseos es del usuario logueado o de otro usuario
         userId = getIntent().getIntExtra(INTENT_USER_ID, -1);
 
-        if (userId == LOGGED_USER) {
-            //Hacemos el boton de anadir wishlist visible
-            btnNewWishlist.setVisibility(View.VISIBLE);
-            btnNewWishlist.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // Quan es selecciona la opcio Amistats (Friends)
-                    Intent intent = new Intent(WishListActivity.this, CreateWishlistActivity.class);
-                    startActivity(intent);
+        try {
+            if (userId == LOGGED_USER || userId == LoginToken.getInstance().getId()) {
+                //Hacemos el boton de anadir wishlist visible
+                btnNewWishlist.setVisibility(View.VISIBLE);
+                btnNewWishlist.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // Quan es selecciona la opcio Amistats (Friends)
+                        Intent intent = new Intent(WishListActivity.this, CreateWishlistActivity.class);
+                        startActivity(intent);
 
-                }
-            });
+                    }
+                });
 
-            ArrayList<Wishlist> wishlists = new ArrayList<>();
-            //Creamos adapter
-            wishAdapter = new WishAdapter(wishlists, true, this);
-            //Obtenemos wishlists
-            APIWishlist.getWishlistsFromCurrentUser(wishlists, this, wishAdapter);
+                ArrayList<Wishlist> wishlists = new ArrayList<>();
+                //Creamos adapter
+                wishAdapter = new WishAdapter(wishlists, true, this);
+                //Obtenemos wishlists
+                APIWishlist.getWishlistsFromCurrentUser(wishlists, this, wishAdapter);
 
 
-        } else {
-            //Hacemos el boton de anadir wishlist invisible
-            btnNewWishlist.setVisibility(View.INVISIBLE);
+            } else {
+                //Hacemos el boton de anadir wishlist invisible
+                btnNewWishlist.setVisibility(View.INVISIBLE);
 
-            ArrayList<Wishlist> wishlists = new ArrayList<>();
-            //Creamos adapter
-            wishAdapter = new WishAdapter(wishlists, false, this);
-            //Obtenemos wishlists
-            APIWishlist.getWishlistsFromUser(userId, wishlists, this, wishAdapter);
+                ArrayList<Wishlist> wishlists = new ArrayList<>();
+                //Creamos adapter
+                wishAdapter = new WishAdapter(wishlists, false, this);
+                //Obtenemos wishlists
+                APIWishlist.getWishlistsFromUser(userId, wishlists, this, wishAdapter);
 
+            }
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
         }
 
         wishListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -79,7 +85,7 @@ public class WishListActivity extends AppCompatActivity {
 
     }
 
-    public int getUserId() {
+    public static int getUserId() {
         return userId;
     }
 
@@ -91,4 +97,6 @@ public class WishListActivity extends AppCompatActivity {
         Intent goHome = new Intent(this, MenuActivity.class);
         startActivity(goHome);
     }
+
+
 }

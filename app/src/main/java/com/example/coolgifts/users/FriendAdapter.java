@@ -1,6 +1,7 @@
 package com.example.coolgifts.users;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.coolgifts.FriendsActivity;
+import com.example.coolgifts.MenuActivity;
+import com.example.coolgifts.PresentsActivity;
 import com.example.coolgifts.R;
+import com.example.coolgifts.WishListActivity;
+import com.example.coolgifts.api.APIPresent;
 
 import java.util.List;
 
@@ -36,9 +42,20 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
         User user = users.get(position);
         holder.fullName.setText(user.getName());
         holder.profilePicture.setImageResource(R.drawable.marco_foto_usuario);
-        // holder.chatIcon.setImageResource(R.drawable.chat_boton); // line removed
-        //holder.giftIcon.setImageResource(R.drawable.ver_regalo_boton);
-        //holder.giftBoxIcon.setImageResource(R.drawable.icono_regalo);
+
+        holder.giftIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //TODO:abrir activity wishlits
+                Intent intent = new Intent(context, WishListActivity.class);
+                intent.putExtra(WishListActivity.INTENT_USER_ID, user.getId());
+                context.startActivity(intent);
+
+            }
+        });
+
+
     }
 
     @Override
