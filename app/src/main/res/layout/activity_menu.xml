@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/oip" />
 
     <ImageButton
-        android:id="@+id/imageButtonIconoUsuario"
+        android:id="@+id/ibUser_Menu"
         android:layout_width="106dp"
         android:layout_height="94dp"
         android:layout_marginStart="270dp"

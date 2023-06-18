@@ -16,18 +16,21 @@ import com.example.coolgifts.users.User;
 
 public class PerfilActivity extends AppCompatActivity {
 
+    public static final String ID_USUARIO = "ID_USUARIO";
+    private int userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
+        userId = getIntent().getIntExtra(ID_USUARIO, -1);
 
     }
 
 
     public void showUserData(User user) throws ApiException {
         //mostrar informacion de user por la activity
-        if (user.getId() == LoginToken.getInstance().getId()) {
+        if (user.getId() == -1 || user.getId() == LoginToken.getInstance().getId()) {
             //el usuario es el logueado
         } else {
             //el usuario no es el logueado

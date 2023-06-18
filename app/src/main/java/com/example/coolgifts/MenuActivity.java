@@ -14,6 +14,7 @@ public class MenuActivity extends AppCompatActivity {
     ImageButton ibFriends;
     ImageButton ibMessage;
     ImageButton ibSearch;
+    ImageButton ibProfile_Menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,8 @@ public class MenuActivity extends AppCompatActivity {
         ibFriends = (ImageButton)findViewById(R.id.ibFriends);
         ibMessage = (ImageButton) findViewById(R.id.ibMessage);
         ibSearch = (ImageButton) findViewById(R.id.ibSearch);
+        ibProfile_Menu = (ImageButton) findViewById(R.id.ibUser_Menu);
+
 
         ibGift.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +64,17 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Quan es selecciona la opcio Cercar (Search)
                 Intent intent = new Intent(MenuActivity.this, SearchActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        ibProfile_Menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Quan es selecciona la opcio Cercar (Search)
+                Intent intent = new Intent(MenuActivity.this, PerfilActivity.class);
+                intent.putExtra(PerfilActivity.ID_USUARIO, -1);
                 startActivity(intent);
 
             }
