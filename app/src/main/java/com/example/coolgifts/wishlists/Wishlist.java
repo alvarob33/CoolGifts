@@ -39,4 +39,8 @@ public class Wishlist {
     public LocalDateTime getEndDate() {
         return endDate;
     }
+
+    public ArrayList<Present> getPresents() {
+        return presents;
+    }
 }

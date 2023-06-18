@@ -1,25 +1,27 @@
 package com.example.coolgifts.api;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.coolgifts.BasicActivity;
 import com.example.coolgifts.LoginActivity;
-import com.example.coolgifts.MainActivity;
-import com.example.coolgifts.MenuActivity;
 import com.example.coolgifts.RegisterActivity;
+import com.example.coolgifts.users.User;
+import com.example.coolgifts.users.FriendAdapter;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class APIUser {
 
@@ -130,6 +132,66 @@ public class APIUser {
                 });
 
         queue.add(jor);
+    }
+
+    public static void getFriendsFromCurrentUser(Activity activity, FriendAdapter friendAdapter) {
+
+        //Obtenemos token del usuario registrado
+        LoginToken loginToken;
+        try {
+            loginToken = LoginToken.getInstance();
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
+
+        //Peticion
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "https://balandrau.salle.url.edu/i3/socialgift/api/v1/users/" + loginToken.getId() + "/friends", null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d("Response: ", response.toString());
+                        try {
+                            parseFriendsFromJSON(response, friendAdapter);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+                }, new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("error: ", error.getMessage());
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                params.put("Authorization", "Bearer " + loginToken.getToken());
+                return params;
+            }
+        };
+        queue.add(jsonArrayRequest);
+    }
+
+    private static void parseFriendsFromJSON(JSONArray wishlistArray, FriendAdapter friendAdapter) throws JSONException {
+
+        for (int i = 0; i < wishlistArray.length(); i++) {
+            JSONObject wishlistObject = wishlistArray.getJSONObject(i);
+
+            int id = wishlistObject.getInt("id");
+            String name = wishlistObject.getString("name");
+            String email = wishlistObject.getString("email");
+            String image = wishlistObject.getString("image");
+
+
+            User user = new User(id, name, email, image);
+
+            friendAdapter.addFriend(user);
+        }
+
     }
 }
 

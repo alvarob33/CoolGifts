@@ -68,6 +68,7 @@ public class CreateWishlistActivity extends AppCompatActivity {
                 // Crear Wishlist
                 Wishlist newWishlist = new Wishlist(etWishlistName.getText().toString(), parsedDate);
                 APIWishlist.createWishlist(newWishlist, CreateWishlistActivity.this);
+                finish();
 
             }
         });

@@ -14,7 +14,6 @@ import com.example.coolgifts.PresentsActivity;
 import com.example.coolgifts.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,7 +61,7 @@ public class PresentsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_presents, container, false);
-        presentsRecycleView =(RecyclerView) v.findViewById(R.id.presentsRecycleView);
+        presentsRecycleView =(RecyclerView) v.findViewById(R.id.presentsRecycleView2);
         presentsRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();

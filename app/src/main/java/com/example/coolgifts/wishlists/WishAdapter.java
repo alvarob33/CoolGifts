@@ -1,6 +1,7 @@
 package com.example.coolgifts.wishlists;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.coolgifts.MenuActivity;
+import com.example.coolgifts.PresentsActivity;
 import com.example.coolgifts.R;
+import com.example.coolgifts.WishListActivity;
 
 import java.util.ArrayList;
 
 public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder> {
 
+    public final static String WISHLIST_NAME = "WISHLIST_NAME";
     private ArrayList<Wishlist> wishlists;
     private Context context;
     private boolean isLoggedUser;
@@ -36,8 +41,27 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder
     @Override
     public void onBindViewHolder(@NonNull WishViewHolder holder, int position) {
         final Wishlist wishlist = wishlists.get(position);
+
+        //Ajustar nombre de cada wishlist
         holder.title.setText(wishlist.getName());
 
+        //Ajustar click en una wishlist
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Pasar los regalos a la otra activity
+                PresentsActivity.setPresents(wishlist.getPresents());
+
+                // Obtener la posición del elemento clicado
+                Intent intent = new Intent(context, PresentsActivity.class);
+                intent.putExtra(WISHLIST_NAME, wishlist.getName());
+                context.startActivity(intent);
+
+            }
+        });
+
+        //Ajustar click en eliminar wishlist
         if (isLoggedUser) {
             holder.deleteIcon.setVisibility(View.VISIBLE);
 
@@ -74,6 +98,7 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder
             title = itemView.findViewById(R.id.title);
             deleteIcon = itemView.findViewById(R.id.delete_icon);
         }
+
     }
 
     public void addWishlist(Wishlist wishlist) {

@@ -57,6 +57,18 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@android:drawable/ic_menu_report_image" />
 
+        <ImageButton
+            android:id="@+id/btnDeletePresent"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="#00FFFFFF"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icono_eliminar" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

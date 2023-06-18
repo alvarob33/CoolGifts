@@ -27,6 +27,8 @@ public class WishListActivity extends AppCompatActivity {
     private WishAdapter wishAdapter;
     private ArrayList<Wishlist> wishlists;
 
+    private int userId;
+
 
 
     @Override
@@ -38,7 +40,8 @@ public class WishListActivity extends AppCompatActivity {
         btnNewWishlist = findViewById(R.id.btnNewWishlist);
 
         //comprobamos si la lista de deseos es del usuario logueado o de otro usuario
-        int userId = getIntent().getIntExtra(INTENT_USER_ID, -1);
+        userId = getIntent().getIntExtra(INTENT_USER_ID, -1);
+
         if (userId == LOGGED_USER) {
             //Hacemos el boton de anadir wishlist visible
             btnNewWishlist.setVisibility(View.VISIBLE);
@@ -74,5 +77,9 @@ public class WishListActivity extends AppCompatActivity {
         wishListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         wishListRecyclerView.setAdapter(wishAdapter);
 
+    }
+
+    public int getUserId() {
+        return userId;
     }
 }

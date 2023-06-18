@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.coolgifts.MenuActivity;
 import com.example.coolgifts.R;
+import com.example.coolgifts.WishListActivity;
 
 public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -18,7 +21,9 @@ public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnCl
     private TextView tvName;
     private TextView tvPrice;
     private ImageView ivPhoto;
+    private ImageButton btnDeletePresent;
     private Activity activity;
+
     public PresentsHolder(LayoutInflater inflater, ViewGroup parent, Activity
             activity) {
         super(inflater.inflate(R.layout.list_element_present, parent, false));
@@ -26,6 +31,8 @@ public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnCl
         tvName = (TextView) itemView.findViewById(R.id.tvName);
         tvPrice = (TextView)itemView.findViewById(R.id.tvPrice);
         ivPhoto = (ImageView)itemView.findViewById(R.id.ivPresent);
+        btnDeletePresent = (ImageButton) itemView.findViewById(R.id.btnDeletePresent);
+
         this.activity = activity;
         itemView.setOnClickListener(this);  //establecer que todo el elemento es el istener
 
@@ -34,6 +41,19 @@ public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnCl
         this.present = present;
         tvName.setText(present.getName());
         tvPrice.setText(present.getPrice() + " €");
+
+        btnDeletePresent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Quan es selecciona la opcio Regals (WishList)
+
+                //TODO: que se elimine el present de la wishlist
+                /*Intent intent = new Intent(MenuActivity.this, WishListActivity.class);
+                intent.putExtra(WishListActivity.INTENT_USER_ID, WishListActivity.LOGGED_USER);
+                startActivity(intent);*/
+
+            }
+        });
 
     }
 

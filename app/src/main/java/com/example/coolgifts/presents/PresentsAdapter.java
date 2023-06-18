@@ -24,8 +24,8 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsHolder>{
     }
     @Override
     public void onBindViewHolder(PresentsHolder holder, int position) {
-        Present pokemon = lPresent.get(position);
-        holder.bind(pokemon);
+        Present present = lPresent.get(position);
+        holder.bind(present);
     }
     @Override
     public int getItemCount() {
