@@ -31,7 +31,8 @@ public class PerfilActivity extends AppCompatActivity {
     public void showUserData(User user) throws ApiException {
         //mostrar informacion de user por la activity
         if (user.getId() == -1 || user.getId() == LoginToken.getInstance().getId()) {
-            //el usuario es el logueado
+            Intent MenuIntent = new Intent(this, MenuActivity.class);
+            startActivity(MenuIntent);
         } else {
             //el usuario no es el logueado
         }

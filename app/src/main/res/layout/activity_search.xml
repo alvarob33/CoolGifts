@@ -19,8 +19,8 @@
 
     <ImageButton
         android:id="@+id/imageButtonHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="82dp"
+        android:layout_height="63dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:background="#FCB4B4"
@@ -30,8 +30,8 @@
 
     <ImageButton
         android:id="@+id/imageButtonPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:background="#FCB4B4"
