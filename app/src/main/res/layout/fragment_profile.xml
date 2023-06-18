@@ -49,7 +49,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameUserTextView4" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNameUser" />
 
     <TextView
         android:id="@+id/textView10RecentViews"
@@ -100,7 +100,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btnAddFriend"
         android:layout_width="151dp"
         android:layout_height="44dp"
         android:layout_marginTop="60dp"
@@ -113,10 +113,10 @@
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/emailUserTextView4" />
+        app:layout_constraintTop_toBottomOf="@+id/tvUsermail" />
 
     <TextView
-        android:id="@+id/nameUserTextView4"
+        android:id="@+id/tvNameUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -130,7 +130,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nameTextView4" />
 
     <TextView
-        android:id="@+id/emailUserTextView4"
+        android:id="@+id/tvUsermail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

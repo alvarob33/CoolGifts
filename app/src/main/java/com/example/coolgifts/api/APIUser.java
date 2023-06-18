@@ -310,7 +310,7 @@ public class APIUser {
         userAdapter.setUsers(users);
 
     }
-    public static void modifUser(String username,String email, String password, RegisterActivity registerActivity) {
+    public static void modifUser(String username,String email, String password, Activity activity) {
 
         LoginToken loginToken;
         try {
@@ -329,27 +329,17 @@ public class APIUser {
         }catch (Exception e){
             Log.e("Error","Error añadiendo al Json");
         }
-        RequestQueue queue = Volley.newRequestQueue(registerActivity);
+        RequestQueue queue = Volley.newRequestQueue(activity);
         JsonObjectRequest jor = new JsonObjectRequest(Request.Method.PUT,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/users",credenciales,
 
                 response -> {
                     Log.d("Response: ", response.toString());
-                    String email2;
-                    String password2;
-                    try {
-                        email2 = (String) response.get("email");
-                        password2 = (String) response.get("password");
-                        loginAfterRegist(email2,password2,registerActivity);
-                    } catch (JSONException e) {
 
-                        throw new RuntimeException(e);
-                    }
                 },
 
                 error -> {
                     int statusCode = error.networkResponse.statusCode;
                     if (statusCode == 409) {
-                        registerActivity.setEmailEditText();
                     } else {
                         Log.e("error: ", error.getMessage());
                     }

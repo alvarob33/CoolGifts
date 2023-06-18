@@ -45,6 +45,6 @@
     <string name="sign_out">SIGN OUT</string>
     <string name="see">See</string>
     <string name="search_text">Search...</string>
+    <string name="save_changes">SAVE CHANGES</string>
     <string name="friendreq">FRIEND REQUESTS</string>
-
 </resources>

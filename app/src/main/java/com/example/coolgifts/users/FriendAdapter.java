@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coolgifts.FriendsActivity;
 import com.example.coolgifts.MenuActivity;
+import com.example.coolgifts.PerfilActivity;
 import com.example.coolgifts.PresentsActivity;
 import com.example.coolgifts.R;
 import com.example.coolgifts.WishListActivity;
@@ -42,6 +43,18 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
         User user = users.get(position);
         holder.fullName.setText(user.getName());
         holder.profilePicture.setImageResource(R.drawable.marco_foto_usuario);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Intent
+                Intent intent = new Intent(context, PerfilActivity.class);
+                intent.putExtra(PerfilActivity.ID_USUARIO, user.getId());
+                context.startActivity(intent);
+
+            }
+        });
 
         holder.giftIcon.setOnClickListener(new View.OnClickListener() {
             @Override

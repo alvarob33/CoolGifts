@@ -23,9 +23,9 @@ public class WishViewActivity extends AppCompatActivity {
         price = findViewById(R.id.textViewPrice);
         description = findViewById(R.id.textView4);
         //no se como cambiar la foto, se ha de pedir a la lista de productos
-        nombre.setText(new_text);
-        price.setText(new_price);
-        description(new_description);
+        //nombre.setText(new_text);
+        //price.setText(new_price);
+        //description(new_description);
     }
 
 }

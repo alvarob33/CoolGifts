@@ -46,4 +46,9 @@ public class LoginToken {
     public int getId() {
         return id;
     }
+
+    public void logOut() {
+        token = null;
+        id = -1;
+    }
 }

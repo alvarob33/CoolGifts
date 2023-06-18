@@ -1,5 +1,6 @@
 package com.example.coolgifts;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.example.coolgifts.api.APIFriends;
+import com.example.coolgifts.api.APIUser;
+import com.example.coolgifts.api.ApiException;
+import com.example.coolgifts.api.LoginToken;
+import com.example.coolgifts.users.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,15 +26,23 @@ public class PersonalProfileFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    User user;
 
-    public PersonalProfileFragment() {
+    EditText et_nameprofile;
+    EditText et_mailprofile;
+    EditText et_passprofile;
+
+    Button btn_seePass;
+    Button btnSaveChanges;
+    Button btn_signOut;
+
+    boolean visiblePass;
+
+
+    public PersonalProfileFragment(User user) {
         // Required empty public constructor
+        this.user = user;
     }
 
     /**
@@ -38,10 +55,9 @@ public class PersonalProfileFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static PersonalProfileFragment newInstance(String param1, String param2) {
-        PersonalProfileFragment fragment = new PersonalProfileFragment();
+        PersonalProfileFragment fragment = new PersonalProfileFragment(null);
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,8 +66,7 @@ public class PersonalProfileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -59,6 +74,73 @@ public class PersonalProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_personal_profile, container, false);
+        View v = inflater.inflate(R.layout.fragment_personal_profile, container, false);
+
+        et_nameprofile = (EditText) v.findViewById(R.id.et_nameprofile);
+        et_mailprofile = (EditText) v.findViewById(R.id.et_mailprofile);
+        et_passprofile = (EditText) v.findViewById(R.id.et_passprofile);
+
+        btn_seePass = (Button) v.findViewById(R.id.btn_seePass);
+        btnSaveChanges = (Button) v.findViewById(R.id.btnSaveChanges);
+        btn_signOut = (Button) v.findViewById(R.id.btn_signOut);
+
+        et_nameprofile.setText(user.getName());
+        et_mailprofile.setText(user.getEmail());
+
+        visiblePass = false;
+        et_passprofile.setText(R.string.passwordnotvisible);
+        et_passprofile.setFocusable(false);
+        et_passprofile.setClickable(false);
+        et_passprofile.setCursorVisible(false);
+
+        btn_seePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (visiblePass) {
+                    visiblePass = false;
+                    et_passprofile.setText(R.string.passwordnotvisible);
+                    et_passprofile.setFocusable(false);
+                    et_passprofile.setClickable(false);
+                    et_passprofile.setCursorVisible(false);
+                } else {
+                    et_passprofile.setText(user.getPassword());
+                    et_passprofile.setFocusableInTouchMode(true);
+                    et_passprofile.setClickable(true);
+                    et_passprofile.setCursorVisible(true);
+                    visiblePass = true;
+                }
+            }
+        });
+
+
+        btnSaveChanges.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (visiblePass) {
+                    //Cambiar datos usuario en api (tambien contrasena)
+                    APIUser.modifUser(et_nameprofile.getText().toString(), et_mailprofile.getText().toString(), et_passprofile.getText().toString(), getActivity());
+                } else {
+                    //Cambiar datos usuario en api (sin contrasena)
+                    APIUser.modifUser(et_nameprofile.getText().toString(), et_mailprofile.getText().toString(), user.getPassword(), getActivity());
+
+                }
+            }
+        });
+
+        btn_signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    LoginToken.getInstance().logOut();
+                } catch (ApiException e) {
+                    throw new RuntimeException(e);
+                }
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        return v;
     }
 }

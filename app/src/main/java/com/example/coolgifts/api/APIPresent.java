@@ -190,7 +190,7 @@ public class APIPresent {
                 if (statusCode == 409) {
                     //especificar error
                 } else {
-                    Log.e("error: ", error.getMessage());
+                    //Log.e("error: ", error.getMessage());
                 }
             }
         }){
