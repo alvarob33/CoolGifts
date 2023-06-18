@@ -25,7 +25,6 @@ public class FriendsActivity extends AppCompatActivity {
 
         friendsRecyclerView = findViewById(R.id.friendsRecyclerView);
 
-
         // Generate the friend list
         List<User> userList = new ArrayList<>();
 

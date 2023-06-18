@@ -130,7 +130,6 @@ public class APIUser {
                         Log.e("error: ", error.getMessage());
                     }
                 });
-
         queue.add(jor);
     }
 
