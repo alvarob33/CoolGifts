@@ -23,8 +23,13 @@ public class PerfilActivity extends AppCompatActivity {
     }
 
 
-    public void showUserData(User user) {
+    public void showUserData(User user) throws ApiException {
         //mostrar informacion de user por la activity
+        if (user.getId() == LoginToken.getInstance().getId()) {
+            //el usuario es el logueado
+        } else {
+            //el usuario no es el logueado
+        }
     }
     public void onClickHome(View view) {
         Intent MenuIntent = new Intent(this, MenuActivity.class);

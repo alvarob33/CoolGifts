@@ -213,7 +213,7 @@ public class APIUser {
                         //Mostrar usuario
                         try {
                             activity.showUserData(parseUserFromJSON(response));
-                        } catch (JSONException e) {
+                        } catch (JSONException | ApiException e) {
                             throw new RuntimeException(e);
                         }
 
