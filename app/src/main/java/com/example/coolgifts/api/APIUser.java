@@ -12,6 +12,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.coolgifts.LoginActivity;
+import com.example.coolgifts.PerfilActivity;
 import com.example.coolgifts.RegisterActivity;
 import com.example.coolgifts.users.User;
 import com.example.coolgifts.users.FriendAdapter;
@@ -193,7 +194,7 @@ public class APIUser {
 
     }
 
-    public static void getUserWithId(int id,PerfilActivity activity) {
+    public static void getUserWithId(int id, PerfilActivity activity) {
 
         //Obtenemos token del usuario registrado
         LoginToken loginToken;

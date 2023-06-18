@@ -41,7 +41,7 @@
             android:name=".FriendsActivity"
             android:exported="false" />
         <activity
-            android:name=".api.PerfilActivity"
+            android:name=".PerfilActivity"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"

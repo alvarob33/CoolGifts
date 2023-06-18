@@ -1,4 +1,4 @@
-package com.example.coolgifts.api;
+package com.example.coolgifts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import com.example.coolgifts.BasicActivity;
 import com.example.coolgifts.MainActivity;
 import com.example.coolgifts.MenuActivity;
 import com.example.coolgifts.R;
+import com.example.coolgifts.api.ApiException;
+import com.example.coolgifts.api.LoginToken;
 import com.example.coolgifts.users.User;
 
 public class PerfilActivity extends AppCompatActivity {
