@@ -17,6 +17,9 @@
             android:name=".ProductsActivity"
             android:exported="false" />
         <activity
+            android:name=".WishViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateWishlistActivity"
             android:exported="false" />
         <activity

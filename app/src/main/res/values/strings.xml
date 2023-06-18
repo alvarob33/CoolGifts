@@ -21,5 +21,9 @@
     <string name="num_friend">Total Friends</string>
     <string name="add">Add Friend</string>
     <string name="recent_views">Recent Views</string>
+    <string name="playstation">Play Station 4</string>
+    <string name="price400">400 €</string>
+    <string name="wish_desc">Description about the product.</string>
+    <string name="reserve">RESERVE</string>
 
 </resources>
