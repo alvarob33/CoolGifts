@@ -54,13 +54,13 @@ public class WishListActivity extends AppCompatActivity {
                         // Quan es selecciona la opcio Amistats (Friends)
                         Intent intent = new Intent(WishListActivity.this, CreateWishlistActivity.class);
                         startActivity(intent);
-
+                        finish();
                     }
                 });
 
                 ArrayList<Wishlist> wishlists = new ArrayList<>();
                 //Creamos adapter
-                wishAdapter = new WishAdapter(wishlists, true, this);
+                wishAdapter = new WishAdapter(wishlists, true, this, this);
                 //Obtenemos wishlists
                 APIWishlist.getWishlistsFromCurrentUser(wishlists, this, wishAdapter);
 
@@ -71,7 +71,7 @@ public class WishListActivity extends AppCompatActivity {
 
                 ArrayList<Wishlist> wishlists = new ArrayList<>();
                 //Creamos adapter
-                wishAdapter = new WishAdapter(wishlists, false, this);
+                wishAdapter = new WishAdapter(wishlists, false, this, this);
                 //Obtenemos wishlists
                 APIWishlist.getWishlistsFromUser(userId, wishlists, this, wishAdapter);
 
@@ -97,6 +97,9 @@ public class WishListActivity extends AppCompatActivity {
         Intent goHome = new Intent(this, MenuActivity.class);
         startActivity(goHome);
     }
-
+    public void reLoad(){
+        Intent reLoad = new Intent(this, WishListActivity.class);
+        startActivity(reLoad);
+    }
 
 }

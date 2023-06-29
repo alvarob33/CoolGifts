@@ -67,8 +67,12 @@ public class CreateWishlistActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Crear Wishlist
                 Wishlist newWishlist = new Wishlist(etWishlistName.getText().toString(), parsedDate);
+                //Add Whislist to API
                 APIWishlist.createWishlist(newWishlist, CreateWishlistActivity.this);
-                WishListActivity.getWishAdapter().addWishlist(newWishlist);
+                //Add Whislist to WhislistView
+                //WishListActivity.getWishAdapter().addWishlist(newWishlist);
+                Intent intent = new Intent(CreateWishlistActivity.this, WishListActivity.class);
+                startActivity(intent);
                 finish();
 
             }

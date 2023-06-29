@@ -52,6 +52,10 @@ public class Wishlist {
         return userId;
     }
 
+    public void setId(int id){
+        this.id = id;
+    }
+
     public LocalDateTime getCreationDate() {
         return creationDate;
     }

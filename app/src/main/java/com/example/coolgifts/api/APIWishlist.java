@@ -1,6 +1,7 @@
 package com.example.coolgifts.api;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -11,7 +12,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.coolgifts.CreateWishlistActivity;
 import com.example.coolgifts.RegisterActivity;
+import com.example.coolgifts.WishListActivity;
 import com.example.coolgifts.presents.Present;
 import com.example.coolgifts.wishlists.WishAdapter;
 import com.example.coolgifts.wishlists.Wishlist;
@@ -53,7 +56,41 @@ public class APIWishlist {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d("Response: ", response.toString());
+                    }
+                }, new Response.ErrorListener(){
 
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("error: ", error.getMessage());
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                params.put("Authorization", "Bearer " + loginToken.getToken());
+                return params;
+            }
+        };
+        queue.add(jor);
+    }
+    public static void deleteWishlist(int idWishlist, WishListActivity ContextActivity) {
+
+        //Obtenemos token del usuario registrado
+        LoginToken loginToken;
+        try {
+            loginToken = LoginToken.getInstance();
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
+        RequestQueue queue = Volley.newRequestQueue(ContextActivity);
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.DELETE,"https://balandrau.salle.url.edu/i3/socialgift/api/v1/wishlists/" + idWishlist,null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response: ", response.toString());
+                        ContextActivity.reLoad();
+                        ContextActivity.finish();
                     }
                 }, new Response.ErrorListener(){
 

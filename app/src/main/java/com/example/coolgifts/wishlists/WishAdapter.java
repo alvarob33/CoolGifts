@@ -1,5 +1,6 @@
 package com.example.coolgifts.wishlists;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coolgifts.PresentsActivity;
 import com.example.coolgifts.R;
+import com.example.coolgifts.WishListActivity;
+import com.example.coolgifts.api.APIWishlist;
 
 import java.util.ArrayList;
 
@@ -23,11 +26,13 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder
     private ArrayList<Wishlist> wishlists;
     private Context context;
     private boolean isLoggedUser;
+    private WishListActivity activityContext;
 
-    public WishAdapter(ArrayList<Wishlist> wishlists, boolean isLoggedUser, Context context) {
+    public WishAdapter(ArrayList<Wishlist> wishlists, boolean isLoggedUser, Context context, WishListActivity activity) {
         this.wishlists = wishlists;
         this.isLoggedUser = isLoggedUser;
         this.context = context;
+        this.activityContext = activity;
     }
 
     @NonNull
@@ -73,8 +78,10 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder
 
                     // Remove the wish from the wishlist
                     wishlists.remove(wishlist);
-
+                    //Eliminar de la API
+                    APIWishlist.deleteWishlist(wishlist.getId(),activityContext);
                     // Notify the adapter that the data set has changed
+
                     notifyDataSetChanged();
                 }
             });
