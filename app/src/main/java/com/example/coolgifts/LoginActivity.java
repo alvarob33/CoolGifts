@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
 
 import com.example.coolgifts.api.APIUser;
 
@@ -42,16 +45,37 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    public void startMenu(){
+    public void startMenu() {
         Intent loginIntent = new Intent(this, MenuActivity.class);
         startActivity(loginIntent);
     }
-    @SuppressLint("SetTextI18n")
-    public void setTextMail(){
-        this.textMail.setText("WRONG PASSWORD OR EMAIL");
+
+
+    //Mostrar l'error de credencials d'inici de sessió
+
+    //Per crear una finestra Pop-Up
+    private void showErrorMessageDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("ERROR: Login Failed")
+                .setMessage(message)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create()
+                .show();
     }
+
+    //Missatges d'error del quadre de diàleg
+
     @SuppressLint("SetTextI18n")
-    public void setTextPassword(){
-        this.textPassword.setText("WRONG PASSWORD OR EMAIL");
+    public void setIncorrectPassOrMail() {
+        showErrorMessageDialog("Incorrect password or email, please try again.");
     }
+
+
+
+
 }
