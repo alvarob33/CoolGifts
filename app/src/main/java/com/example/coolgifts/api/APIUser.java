@@ -54,8 +54,8 @@ public class APIUser {
              error ->{
                  int statusCode = error.networkResponse.statusCode;
                  if(statusCode == 401){
-                    loginActivity.setTextMail();
-                    loginActivity.setTextMail();
+                    loginActivity.setIncorrectPassOrMail();
+
                  }else{
                      Log.e("error: ", error.getMessage());
                  }

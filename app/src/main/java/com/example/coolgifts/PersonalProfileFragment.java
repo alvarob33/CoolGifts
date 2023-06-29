@@ -137,6 +137,8 @@ public class PersonalProfileFragment extends Fragment {
                 }
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
+                //Finalizamos todas las actividades y cerramos la aplicación.
+                getActivity().finishAffinity();
             }
         });
 
