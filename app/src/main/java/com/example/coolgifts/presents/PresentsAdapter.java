@@ -45,6 +45,24 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsHolder>{
                 holder.getBtnDeletePresent().setVisibility(View.INVISIBLE);
                 holder.getIbAddPresent().setVisibility(View.INVISIBLE);
 
+                if (present.isBooked()) {
+                    holder.getbReserve().setVisibility(View.INVISIBLE);
+                } else {
+
+                    holder.getbReserve().setVisibility(View.VISIBLE);
+
+                    holder.getbReserve().setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            APIPresent.createBook(present.getId(), activity);
+                            holder.getbReserve().setVisibility(View.INVISIBLE);
+                            present.setBooked(1);
+
+                            //todo: Mostrar mensaje informando por pantalla
+                        }
+                    });
+                }
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -60,6 +78,8 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsHolder>{
 
             case PresentsAdapter.EDITABLE:
                 holder.getIbAddPresent().setVisibility(View.INVISIBLE);
+                holder.getbReserve().setVisibility(View.INVISIBLE);
+
                 //configuramos boton eliminar
                 holder.getBtnDeletePresent().setVisibility(View.VISIBLE);
 
@@ -87,6 +107,7 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsHolder>{
 
             case PresentsAdapter.PRODUCTS:
                 holder.getBtnDeletePresent().setVisibility(View.INVISIBLE);
+                holder.getbReserve().setVisibility(View.INVISIBLE);
                 holder.getIbAddPresent().setVisibility(View.VISIBLE);
                 holder.getIbAddPresent().setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +27,8 @@ public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnCl
     private ImageView ivPhoto;
     private ImageButton btnDeletePresent;
     private ImageButton ibAddPresent;
+    private Button bReserve;
+
     private Activity activity;
 
     public PresentsHolder(int type, LayoutInflater inflater, ViewGroup parent, Activity activity) {
@@ -36,6 +39,7 @@ public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnCl
         ivPhoto = (ImageView)itemView.findViewById(R.id.ivPresent);
         btnDeletePresent = (ImageButton) itemView.findViewById(R.id.btnDeletePresent);
         ibAddPresent = (ImageButton) itemView.findViewById(R.id.ibAddPresent);
+        bReserve = (Button) itemView.findViewById(R.id.buttonReserve);
 
         this.type = type;
         this.activity = activity;
@@ -46,9 +50,6 @@ public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnCl
         this.present = present;
         tvName.setText(present.getName());
         tvPrice.setText(present.getPrice() + " €");
-
-
-
 
     }
 
@@ -69,5 +70,9 @@ public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     public ImageButton getIbAddPresent() {
         return ibAddPresent;
+    }
+
+    public Button getbReserve() {
+        return bReserve;
     }
 }

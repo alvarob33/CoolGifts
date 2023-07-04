@@ -94,4 +94,12 @@ public class Present {
     public void setWishlistId(int wishlistId) {
         this.wishlistId = wishlistId;
     }
+
+    public boolean isBooked() {
+        return booked == 1;
+    }
+
+    public void setBooked(int booked) {
+        this.booked = booked;
+    }
 }

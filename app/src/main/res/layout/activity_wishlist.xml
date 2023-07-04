@@ -80,17 +80,17 @@
 
     <Button
         android:id="@+id/btnNewWishlist"
-        android:layout_width="310dp"
+        android:layout_width="66dp"
         android:layout_height="66dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#FC9090"
         android:fontFamily="sans-serif"
-        android:text="NEW WISHLIST"
+        android:text="@string/add"
         android:textColor="#000000"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
