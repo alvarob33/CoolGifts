@@ -78,6 +78,7 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder
 
                     // Remove the wish from the wishlist
                     wishlists.remove(wishlist);
+                    notifyDataSetChanged();
                     //Eliminar de la API
                     APIWishlist.deleteWishlist(wishlist.getId(),activityContext);
                     // Notify the adapter that the data set has changed
