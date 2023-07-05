@@ -58,10 +58,10 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder
                 PresentsActivity.setWishlist(wishlist);
 
                 // Obtener la posición del elemento clicado
-                Intent intent = new Intent(context, PresentsActivity.class);
+                Intent intent = new Intent(activityContext, PresentsActivity.class);
                 intent.putExtra(WISHLIST_NAME, wishlist.getName());
                 intent.putExtra(IS_LOGGED_USER, isLoggedUser);
-                context.startActivity(intent);
+                activityContext.startActivity(intent);
 
             }
         });
@@ -83,7 +83,6 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder
                     APIWishlist.deleteWishlist(wishlist.getId(),activityContext);
                     // Notify the adapter that the data set has changed
 
-                    notifyDataSetChanged();
                 }
             });
         } else {

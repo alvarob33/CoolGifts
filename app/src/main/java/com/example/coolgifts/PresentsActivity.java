@@ -41,6 +41,16 @@ public class PresentsActivity extends AppCompatActivity {
         //ajustamos nombre wishlist
         tvNombreLista.setText(getIntent().getStringExtra(WishAdapter.WISHLIST_NAME));
 
+        //comprobamos si la lista es del usuario loggeado
+        if (getIntent().getBooleanExtra(WishAdapter.IS_LOGGED_USER, true)) {
+            adapter = new PresentsAdapter(PresentsAdapter.EDITABLE, wishlist.getPresents(), this);
+        } else {
+            adapter = new PresentsAdapter(PresentsAdapter.NO_EDITABLE, wishlist.getPresents(), this);
+        }
+
+        presentsRecycleView.setLayoutManager(new LinearLayoutManager(this));
+        presentsRecycleView.setAdapter(adapter);
+
         try {
             if (WishListActivity.getUserId() == WishListActivity.LOGGED_USER || WishListActivity.getUserId() == LoginToken.getInstance().getId()) {
 
@@ -65,21 +75,9 @@ public class PresentsActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        //pokedex = Pokedex.getInstance();
 
-        if (adapter == null) {
-            //comprobamos si la lista es del usuario loggeado
-            if (getIntent().getBooleanExtra(WishAdapter.IS_LOGGED_USER, true)) {
-                adapter = new PresentsAdapter(PresentsAdapter.EDITABLE, wishlist.getPresents(), this);
-            } else {
-                adapter = new PresentsAdapter(PresentsAdapter.NO_EDITABLE, wishlist.getPresents(), this);
-            }
+        adapter.notifyDataSetChanged();
 
-            presentsRecycleView.setLayoutManager(new LinearLayoutManager(this));
-            presentsRecycleView.setAdapter(adapter);
-        } else {
-            adapter.notifyDataSetChanged();
-        }
     }
 
     public static Wishlist getWishlist() { return wishlist; }
