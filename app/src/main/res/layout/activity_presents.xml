@@ -9,12 +9,12 @@
 
     <Button
         android:id="@+id/btnNewPresent"
-        android:layout_width="310dp"
+        android:layout_width="66dp"
         android:layout_height="66dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#FC9090"
         android:fontFamily="sans-serif"
-        android:text="@string/new_present"
+        android:text="@string/add"
         android:textColor="#000000"
         android:textSize="34sp"
         android:textStyle="bold"

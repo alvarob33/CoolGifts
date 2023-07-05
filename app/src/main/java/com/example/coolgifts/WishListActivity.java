@@ -97,9 +97,5 @@ public class WishListActivity extends AppCompatActivity {
         Intent goHome = new Intent(this, MenuActivity.class);
         startActivity(goHome);
     }
-    public void reLoad(){
-        Intent reLoad = new Intent(this, WishListActivity.class);
-        startActivity(reLoad);
-    }
 
 }

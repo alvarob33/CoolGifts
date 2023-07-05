@@ -89,8 +89,8 @@ public class APIWishlist {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d("Response: ", response.toString());
-                        ContextActivity.reLoad();
-                        ContextActivity.finish();
+                        //ContextActivity.reLoad();
+                        //ContextActivity.finish();
                     }
                 }, new Response.ErrorListener(){
 

@@ -82,7 +82,6 @@
         android:id="@+id/btnNewWishlist"
         android:layout_width="66dp"
         android:layout_height="66dp"
-        android:layout_marginRight="24dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="#FC9090"
         android:fontFamily="sans-serif"
@@ -91,7 +90,8 @@
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/wishListRecyclerView"
