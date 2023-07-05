@@ -79,11 +79,12 @@
         android:layout_marginTop="270dp"
         android:background="#FFBEBE"
         android:backgroundTint="#FEABAB"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/add_friend__1___1_" />
+        app:srcCompat="@drawable/friends" />
 
     <ImageButton
         android:id="@+id/ibGift"

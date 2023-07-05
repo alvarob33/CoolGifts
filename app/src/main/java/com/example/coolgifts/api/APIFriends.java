@@ -12,6 +12,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.coolgifts.users.FriendRequest;
+import com.example.coolgifts.users.FriendRequestsAdapter;
+import com.example.coolgifts.users.User;
+import com.example.coolgifts.users.UserAdapter;
 import com.example.coolgifts.wishlists.WishAdapter;
 import com.example.coolgifts.wishlists.Wishlist;
 
@@ -66,7 +70,7 @@ public class APIFriends {
         queue.add(jor);
     }
 
-    public static void getFriendRequest(Activity activity) {
+    public static void getFriendRequest(FriendRequestsAdapter frAdapter, Activity activity) {
 
         //Obtenemos token del usuario registrado
         LoginToken loginToken;
@@ -84,6 +88,11 @@ public class APIFriends {
                     public void onResponse(JSONArray response) {
                         Log.d("Response: ", response.toString());
                         //change activity
+                        try {
+                            parseFriendRequests(response, frAdapter);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }, new Response.ErrorListener(){
 
@@ -101,6 +110,26 @@ public class APIFriends {
             }
         };
         queue.add(jsonArrayRequest);
+    }
+
+    private static void parseFriendRequests(JSONArray friendRequestsArray, FriendRequestsAdapter frAdapter) throws JSONException {
+
+        ArrayList<FriendRequest> friendRequests = new ArrayList<>();
+
+        for (int i = 0; i < friendRequestsArray.length(); i++) {
+            JSONObject wishlistObject = friendRequestsArray.getJSONObject(i);
+
+            int id = wishlistObject.getInt("id");
+            String name = wishlistObject.getString("name");
+            String email = wishlistObject.getString("email");
+            String image = wishlistObject.getString("image");
+
+
+            friendRequests.add( new FriendRequest(id, name, email, image) );
+
+        }
+        frAdapter.setFriendRequests(friendRequests);
+
     }
 
     public static void acceptRequestFriend(int friendID, Activity activity) {
