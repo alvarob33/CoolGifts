@@ -16,6 +16,7 @@ import com.example.coolgifts.MenuActivity;
 import com.example.coolgifts.PresentsActivity;
 import com.example.coolgifts.R;
 import com.example.coolgifts.WishListActivity;
+import com.squareup.picasso.Picasso;
 
 public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -74,5 +75,9 @@ public class PresentsHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     public Button getbReserve() {
         return bReserve;
+    }
+
+    public void setIvPhoto(String present) {
+        Picasso.get().load(present).into(this.ivPhoto);
     }
 }

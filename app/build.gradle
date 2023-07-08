@@ -37,7 +37,7 @@ dependencies {
     // https://mvnrepository.com/artifact/com.squareup.okhttp/okhttp
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'com.squareup.okhttp:okhttp:2.7.5'
-
+    implementation 'com.squareup.picasso:picasso:2.71828'
     //token
     implementation 'com.auth0:java-jwt:4.4.0'
 

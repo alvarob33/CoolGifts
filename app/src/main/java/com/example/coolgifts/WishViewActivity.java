@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.coolgifts.api.APIPresent;
 import com.example.coolgifts.presents.Present;
+import com.squareup.picasso.Picasso;
 
 public class WishViewActivity extends AppCompatActivity {
 
@@ -38,7 +39,7 @@ public class WishViewActivity extends AppCompatActivity {
         name.setText(present.getName());
         price.setText(present.getPrice() + " €");
         description.setText(present.getDescription());
-
+        Picasso.get().load(present.getPhoto()).into(fotoProducto);
         btnReserve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

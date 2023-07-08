@@ -88,7 +88,6 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder
         } else {
             holder.deleteIcon.setVisibility(View.INVISIBLE);
         }
-
     }
 
     @Override

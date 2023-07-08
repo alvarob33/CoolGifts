@@ -40,7 +40,7 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsHolder>{
     @Override
     public void onBindViewHolder(PresentsHolder holder, int position) {
         Present present = lPresent.get(position);
-
+        holder.setIvPhoto(present.getPhoto());
         switch (type) {
             case PresentsAdapter.NO_EDITABLE:
                 holder.getBtnDeletePresent().setVisibility(View.INVISIBLE);
@@ -51,7 +51,6 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsHolder>{
                 } else {
 
                     holder.getbReserve().setVisibility(View.VISIBLE);
-
                     holder.getbReserve().setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {

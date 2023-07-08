@@ -102,4 +102,6 @@ public class Present {
     public void setBooked(int booked) {
         this.booked = booked;
     }
+    public String getLink(){return this.link;}
+    public String getPhoto(){return this.photo;}
 }
