@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -59,7 +60,7 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsHolder>{
                             holder.getbReserve().setVisibility(View.INVISIBLE);
                             present.setBooked(1);
 
-                            //todo: Mostrar mensaje informando por pantalla
+
                         }
                     });
                 }
@@ -116,6 +117,8 @@ public class PresentsAdapter extends RecyclerView.Adapter<PresentsHolder>{
                         PresentsActivity.getAdapter().addPresent(present);
                         APIPresent.createGift(PresentsActivity.getWishlist().getId(), present.getProductUrl(), activity);
 
+                        // Mostrar el mensaje de éxito
+                        Toast.makeText(activity, "Successfull: \nPresent added successfully to the Wishlist!", Toast.LENGTH_LONG).show();
                     }
                 });
                 break;
