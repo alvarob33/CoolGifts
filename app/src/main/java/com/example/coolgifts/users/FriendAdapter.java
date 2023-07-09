@@ -79,17 +79,21 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
     class FriendViewHolder extends RecyclerView.ViewHolder {
         ImageView profilePicture;
         TextView fullName;
-        // ImageView chatIcon; // line removed
+        ImageView chatIcon;
         ImageView giftIcon;
         ImageView giftBoxIcon;
+
+
 
         public FriendViewHolder(@NonNull View itemView) {
             super(itemView);
             profilePicture = itemView.findViewById(R.id.profile_picture);
             fullName = itemView.findViewById(R.id.full_name);
-            // chatIcon = itemView.findViewById(R.id.chat_icon); // line removed
+            chatIcon = itemView.findViewById(R.id.chat_icon);
             giftIcon = itemView.findViewById(R.id.gift_icon);
             giftBoxIcon = itemView.findViewById(R.id.gift_box_icon);
+
+
         }
     }
 

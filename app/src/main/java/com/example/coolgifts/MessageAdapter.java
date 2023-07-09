@@ -3,6 +3,7 @@ package com.example.coolgifts;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import java.util.List;
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
 
     private List<String> messages;
+
+
 
     public MessageAdapter(List<String> messages) {
         this.messages = messages;
@@ -43,9 +46,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     static class MessageViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewMessage;
+        ImageView profilePicture;
+        TextView fullName;
 
         MessageViewHolder(@NonNull View itemView) {
             super(itemView);
+            profilePicture = itemView.findViewById(R.id.profile_picture);
+            fullName = itemView.findViewById(R.id.full_name);
             textViewMessage = itemView.findViewById(R.id.textViewMessage);
         }
 
