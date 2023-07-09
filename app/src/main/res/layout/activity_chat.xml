@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ChatActivity">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="-16dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="1000dp"
@@ -86,4 +100,3 @@
         app:srcCompat="@drawable/icono_enviar_peque" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

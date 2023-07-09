@@ -204,5 +204,4 @@ public class APIFriends {
         };
         queue.add(jor);
     }
-
 }
