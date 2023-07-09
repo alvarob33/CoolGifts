@@ -94,4 +94,11 @@ public class PresentsActivity extends AppCompatActivity {
         Intent goHome = new Intent(this, MenuActivity.class);
         startActivity(goHome);
     }
+    public void goPerfil(View view) {
+        // Quan es selecciona la opcio Cercar (Search)
+        Intent intent = new Intent(this, PerfilActivity.class);
+        intent.putExtra(PerfilActivity.ID_USUARIO, -1);
+        startActivity(intent);
+
+    }
 }

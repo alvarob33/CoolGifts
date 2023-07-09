@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.coolgifts.api.APIFriends;
 import com.example.coolgifts.users.FriendRequest;
@@ -32,5 +34,16 @@ public class FriendRequestsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         APIFriends.getFriendRequest(adapter, this);
+    }
+    public void goHome(View view) {
+        Intent goHome = new Intent(this, MenuActivity.class);
+        startActivity(goHome);
+    }
+    public void goPerfil(View view) {
+        // Quan es selecciona la opcio Cercar (Search)
+        Intent intent = new Intent(this, PerfilActivity.class);
+        intent.putExtra(PerfilActivity.ID_USUARIO, -1);
+        startActivity(intent);
+
     }
 }

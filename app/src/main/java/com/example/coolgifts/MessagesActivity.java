@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 
 import com.example.coolgifts.api.APIUser;
 import com.example.coolgifts.users.User;
@@ -26,28 +28,17 @@ public class MessagesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        texto = findViewById(id.WriteBar);
-        userAdapter = new UserAdapter(userList, this);
-        recyclerView.setAdapter(userAdapter);
-        recyclerView = findViewById(id.recyclerView);
         setContentView(layout.activity_messages);
-        texto.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                //Cambiar usuarios por los que encuentre la api
-                APIUser.getUsersByString(texto.toString(), (Activity) texto.getContext(),userAdapter);
-                //searchUser(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
+    }
+    public void goHome(View view) {
+        Intent goHome = new Intent(this, MenuActivity.class);
+        startActivity(goHome);
+    }
+    public void goPerfil(View view) {
+        // Quan es selecciona la opcio Cercar (Search)
+        Intent intent = new Intent(this, PerfilActivity.class);
+        intent.putExtra(PerfilActivity.ID_USUARIO, -1);
+        startActivity(intent);
 
     }
 }

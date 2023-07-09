@@ -24,6 +24,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="300dp"
         android:background="#FFBEBE"
+        android:onClick="goHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,12 +37,14 @@
         android:layout_marginStart="300dp"
         android:layout_marginTop="20dp"
         android:background="#FFBEBE"
+        android:onClick="goPerfil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icono_usuario_2" />
 
     <LinearLayout
+        android:id="@+id/linearLayout7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="440dp"
@@ -73,12 +76,15 @@
         android:id="@+id/WriteBar"
         android:layout_width="350dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="450dp"
+        android:layout_marginTop="113dp"
         android:background="#FCE5E5"
         android:hint="Search..."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.236" />
 
     <ImageButton
         android:id="@+id/imageButton7Lupa"
@@ -104,4 +110,3 @@
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FBD7D7"
+    android:onClick="goHome"
     tools:context=".FriendRequestsActivity">
 
     <ImageView
@@ -24,6 +25,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="300dp"
         android:background="#FCB4B4"
+        android:onClick="goHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,6 +38,7 @@
         android:layout_marginStart="300dp"
         android:layout_marginTop="20dp"
         android:background="#FCB4B4"
+        android:onClick="goPerfil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
