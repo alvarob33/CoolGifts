@@ -11,8 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.coolgifts.ChatActivity;
 import com.example.coolgifts.FriendsActivity;
 import com.example.coolgifts.MenuActivity;
+import com.example.coolgifts.MessagesActivity;
 import com.example.coolgifts.PerfilActivity;
 import com.example.coolgifts.PresentsActivity;
 import com.example.coolgifts.R;
@@ -53,6 +55,15 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
                 intent.putExtra(PerfilActivity.ID_USUARIO, user.getId());
                 context.startActivity(intent);
 
+            }
+        });
+
+        holder.chatIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ChatActivity.class);
+                intent.putExtra(PerfilActivity.ID_USUARIO, user.getId());
+                context.startActivity(intent);
             }
         });
 

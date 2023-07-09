@@ -3,12 +3,15 @@ package com.example.coolgifts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import com.example.coolgifts.api.APIPresent;
 import com.example.coolgifts.presents.Present;
@@ -41,6 +44,7 @@ public class WishViewActivity extends AppCompatActivity {
         description.setText(present.getDescription());
         Picasso.get().load(present.getPhoto()).into(fotoProducto);
         btnReserve.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
@@ -48,8 +52,11 @@ public class WishViewActivity extends AppCompatActivity {
                 //APIPresent.createBook(present.getId(), WishViewActivity.this);
                 btnReserve.setVisibility(View.INVISIBLE);
 
+
+
             }
         });
+
 
         //no se como cambiar la foto, se ha de pedir a la lista de productos
         //nombre.setText(new_text);
