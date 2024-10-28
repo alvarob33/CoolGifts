@@ -74,7 +74,6 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishViewHolder
             holder.deleteIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //todo:borrar wishlist de la API
 
                     // Remove the wish from the wishlist
                     wishlists.remove(wishlist);

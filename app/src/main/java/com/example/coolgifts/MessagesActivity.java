@@ -10,10 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.coolgifts.api.APIUser;
-import com.example.coolgifts.users.FriendAdapter;
-import com.example.coolgifts.users.User;
-import com.example.coolgifts.users.UserAdapter;
+import com.example.coolgifts.api.ApiMessages;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
@@ -44,7 +41,7 @@ public class MessagesActivity extends AppCompatActivity {
         RecyclerView.setAdapter(messageAdapter);
 
         //Cargar usuarios de la api
-        //TODO: Cargar usuarios API
+        ApiMessages.setMessages(this, PresentsActivity.getWishlist().getUserId(), messageAdapter);
     }
     public void goHome(View view) {
         Intent goHome = new Intent(this, MenuActivity.class);

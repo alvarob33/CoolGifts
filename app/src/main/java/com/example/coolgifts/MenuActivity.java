@@ -53,8 +53,8 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Quan es selecciona la opcio Missatges (Message)
-                Intent intent = new Intent(MenuActivity.this, MessagesActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(MenuActivity.this, MessagesActivity.class);
+                //startActivity(intent);
 
             }
         });

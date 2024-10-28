@@ -20,7 +20,14 @@ public class LoginToken {
     private String token;
     private int id;
 
+    private LoginToken(String token) {
+        this.token = token;
+        DecodedJWT jwt = JWT.decode(token);
+        this.id = jwt.getClaim("id").asInt();
+    }
+
     public static void saveToken(String token) {
+        //Singleton
         sLoginToken = new LoginToken(token);
 
         //return sLoginToken;
@@ -31,12 +38,6 @@ public class LoginToken {
             throw new ApiException("No hay ningun usuario logeado.", null);
         }
         return sLoginToken;
-    }
-
-    private LoginToken(String token) {
-        this.token = token;
-        DecodedJWT jwt = JWT.decode(token);
-        this.id = jwt.getClaim("id").asInt();
     }
 
     public String getToken() {

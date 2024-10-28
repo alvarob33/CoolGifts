@@ -71,7 +71,6 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
             @Override
             public void onClick(View view) {
 
-                //TODO:abrir activity wishlits
                 Intent intent = new Intent(context, WishListActivity.class);
                 intent.putExtra(WishListActivity.INTENT_USER_ID, user.getId());
                 context.startActivity(intent);
